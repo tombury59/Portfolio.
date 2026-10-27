@@ -475,3 +475,19 @@ p.additional-text { color: rgba(255, 255, 255, 0.55); }
   position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
+
+/* Toast shown when an email address is copied */
+.mail-toast {
+  position: fixed; left: 50%; bottom: 3rem; z-index: 10000;
+  max-width: calc(100% - 4rem);
+  padding: 1.2rem 2.2rem; border-radius: 999px;
+  background: rgba(8, 14, 30, 0.92); color: #e8ecf5;
+  border: 1px solid rgba(77, 132, 204, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+  font: 500 1.4rem/1.3 "IBMPlexSans", sans-serif; text-align: center;
+  opacity: 0; pointer-events: none;
+  transform: translate(-50%, 20px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+.mail-toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (max-width: 768px) { .mail-toast { bottom: 10rem; } }
