@@ -242,3 +242,24 @@ p, .section__text, .block__text, h4 small, .team__text { color: rgba(255, 255, 2
 .Certifications__date { color: rgba(255, 255, 255, 0.5); }
 .Certification__ex img { filter: invert(1) brightness(0.9); }
 h2::after { background-color: #4d84cc; }
+
+/* Parallax */
+.parallax-layer {
+  position: absolute;
+  top: -40px; right: -40px; bottom: -40px; left: -40px;
+  pointer-events: none;
+  will-change: transform;
+}
+.parallax-layer--front { pointer-events: auto; }
+.parallax-layer > div { position: absolute; width: 100%; height: 100%; min-height: 320px; background-color: transparent; }
+
+.mainmedia__content,
+.media__content { border-radius: 6px; }
+.mainmedia__image,
+.media__image { transform: scale(1.12); will-change: transform; }
+.main__media { background-size: 120% 120%; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mainmedia__image, .media__image { transform: none; }
+  .main__media { background-size: cover; }
+}

@@ -277,6 +277,27 @@ function initParticlesJS() {
     });
   }
 
+  // Triangles back layer (depth parallax, lighter and slower)
+  const bgndTrianglesBack = document.getElementById('triangles-back');
+  if (bgndTrianglesBack && typeof particlesJS !== 'undefined') {
+    particlesJS('triangles-back', {
+      particles: {
+        number: { value: 28, density: { enable: true, value_area: 1420 } },
+        color: { value: "#4d84cc" },
+        shape: { type: "triangle" },
+        opacity: { value: 0.14, random: true },
+        size: { value: 6, random: true },
+        line_linked: { enable: false },
+        move: { enable: true, speed: 1.2, direction: "none", random: true, straight: false, out_mode: "out" }
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: { onhover: { enable: false }, onclick: { enable: false }, resize: true }
+      },
+      retina_detect: true
+    });
+  }
+
   // Particles BG - particlesJS
   const bgndParticles = document.getElementById('particles-js');
   if (bgndParticles && typeof particlesJS !== 'undefined') {
