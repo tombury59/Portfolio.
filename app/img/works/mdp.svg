@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="'IBM Plex Sans','Segoe UI',Arial,sans-serif">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2a1a3e"/><stop offset="1" stop-color="#120b20"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.8" cy="0.15" r="0.9">
+      <stop offset="0" stop-color="#9854c5" stop-opacity="0.45"/><stop offset="1" stop-color="#9854c5" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#g)"/>
+  <rect width="800" height="500" fill="url(#glow)"/>
+  <rect x="60" y="135" width="54" height="6" rx="3" fill="#9854c5"/>
+  <text x="60" y="115" fill="#b98fe0" font-size="22" font-weight="600" letter-spacing="4">PROJET M1 · REFONTE DE SITE</text>
+  <text x="58" y="215" fill="#ffffff" font-size="56" font-weight="700" letter-spacing="-1.5">Mission Locale</text>
+  <text x="58" y="275" fill="#ffffff" font-size="56" font-weight="700" letter-spacing="-1.5">du Choletais</text>
+  <text x="60" y="320" fill="#cbb8e6" font-size="24" font-weight="400">Site d'accompagnement des 16-25 ans</text>
+  <g font-size="22" font-weight="600">
+    <rect x="60" y="400" width="130" height="46" rx="23" fill="#ffffff" fill-opacity="0.08" stroke="#9854c5" stroke-opacity="0.5"/><text x="125" y="430" fill="#e9ddf7" text-anchor="middle">Laravel</text>
+    <rect x="205" y="400" width="140" height="46" rx="23" fill="#ffffff" fill-opacity="0.08" stroke="#9854c5" stroke-opacity="0.5"/><text x="275" y="430" fill="#e9ddf7" text-anchor="middle">Tailwind</text>
+    <rect x="360" y="400" width="110" height="46" rx="23" fill="#ffffff" fill-opacity="0.08" stroke="#9854c5" stroke-opacity="0.5"/><text x="415" y="430" fill="#e9ddf7" text-anchor="middle">MySQL</text>
+  </g>
+</svg>

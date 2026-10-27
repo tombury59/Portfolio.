@@ -1,0 +1,39 @@
+{
+  "name": "barry-portfolio",
+  "version": "1.0.0",
+  "description": "Personal Portfolio Website for Barry Fardar",
+  "main": "index.js",
+  "scripts": {
+    "optimize-images": "imagemin app/img/**/* --out-dir=app/img/optimized",
+    "minify-css": "cleancss -o app/css/main.min.css app/css/main.css",
+    "minify-js": "uglifyjs app/js/custom.js -o app/js/custom.min.js",
+    "build": "npm run optimize-images && npm run minify-css && npm run minify-js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/barry-far/websitee.git"
+  },
+  "keywords": [
+    "portfolio",
+    "web development",
+    "ui/ux design",
+    "personal website"
+  ],
+  "author": "Barry Fardar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/barry-far/websitee/issues"
+  },
+  "homepage": "https://github.com/barry-far/websitee#readme",
+  "devDependencies": {
+    "clean-css-cli": "^5.6.2",
+    "imagemin-cli": "^7.0.0",
+    "uglify-js": "^3.17.4"
+  },
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.1",
+    "typed.js": "^2.0.12",
+    "vegas": "^2.5.4"
+  }
+}

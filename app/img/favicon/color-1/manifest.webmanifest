@@ -1,0 +1,23 @@
+{
+  "name": "Tom Bury — Portfolio",
+  "short_name": "Tom Bury",
+  "description": "Portfolio de Tom Bury - Développeur Full-Stack",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#120b20",
+  "theme_color": "#9854c5",
+  "icons": [
+    {
+      "src": "/img/favicon/color-1/android-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/favicon/color-1/android-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
