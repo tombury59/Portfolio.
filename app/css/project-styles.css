@@ -263,3 +263,45 @@ h2::after { background-color: #4d84cc; }
   .mainmedia__image, .media__image { transform: none; }
   .main__media { background-size: cover; }
 }
+
+/* Dark theme leftovers (quote block, small notes) */
+blockquote cite, blockquote cite span { color: rgba(255, 255, 255, 0.6); }
+blockquote::before { filter: invert(1); opacity: 0.35; }
+.project-details .inputs-description { color: rgba(255, 255, 255, 0.5); }
+
+/* Mobile / tablet (single column layout) */
+@media (max-width: 1199px) {
+  /* Images no longer take a full screen */
+  .main__media,
+  .inner__media { height: 55vh; min-height: 320px; }
+
+  /* Experience / Formation: small icon on the left, text on the right */
+  .Certification__ex { flex-direction: row; align-items: flex-start; padding: 1rem 0; margin-bottom: 1rem; }
+  .Certification__ex img { width: 36px; height: 36px; }
+  .mg-left-2rem { margin: 0 0 0 1.4rem; }
+
+  /* Footer of the hero: more air between social icons and email */
+  .main__dataline > div + div { margin-top: 1.2rem; }
+}
+
+@media (max-width: 767px) {
+  /* Projects: same gutters as the rest of the page, image always before text */
+  .inner__container.project-container { padding: 2.5rem 10%; }
+  .project-container .row,
+  .project-container .row.flex-row-reverse { flex-direction: column !important; }
+  .project-image-container { margin-bottom: 1.6rem; }
+  .project-details h3 { font-size: 3rem; line-height: 1.1; }
+  .project-container:hover { background-color: transparent; }
+
+  /* Skills / features: tighter vertical rhythm */
+  .inner__block { padding: 7rem 0; }
+}
+
+/* Fixed-width icon column so Experience / Formation text lines up */
+.Certification__ex > div:first-child { flex: 0 0 auto; }
+@media (max-width: 1199px) {
+  .Certification__ex > div:first-child { flex: 0 0 36px; width: 36px; }
+}
+/* "Fait avec ♥" footer was dark grey on the blue gradient */
+p.additional-text { color: rgba(255, 255, 255, 0.55); }
+.no-touch p.additional-text a:hover { color: #ffffff; }
