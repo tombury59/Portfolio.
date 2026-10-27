@@ -8,7 +8,6 @@
 //  4. Skillbars Settings
 //  5. Vegas Settings
 //  6. KBW-Countdown Settings
-//  7. Mailchimp Notify Form
 //  8. Contact Form
 //  9. ParticlesJS Backgrounds
 //  10. Project Detail Panels
@@ -430,8 +429,6 @@ document.addEventListener("DOMContentLoaded", function() {
   
   // Initialize other components as needed
   initSkillbars();
-  initVegas();
-  initCountdown();
 });
 
 // Initialize Magnific Popup
@@ -462,43 +459,8 @@ function initSkillbars() {
   }
 }
 
-// Initialize Vegas
-function initVegas() {
-  const bgndKenburns = $('#bgndKenburns');
-  if (bgndKenburns.length && $.fn.vegas) {
-    bgndKenburns.vegas({
-      timer: false,
-      delay: 5000,
-      transition: 'fade2',
-      transitionDuration: 2000,
-      slides: [
-        { src: "https://dummyimage.com/1080x1440/636363/ffffff" },
-        { src: "https://dummyimage.com/1080x1440/636363/ffffff" },
-        { src: "https://dummyimage.com/1080x1440/636363/ffffff" }
-      ],
-      animation: [ 'kenburnsUp', 'kenburnsDown', 'kenburnsLeft', 'kenburnsRight' ]
-    });
-  }
-}
-
-// Initialize Countdown
-function initCountdown() {
-  if ($.fn.countdown) {
-    $('#countdown').countdown({until: $.countdown.UTCDate(+10, 2023, 2, 17), format: 'D'});
-    $('#countdown-large').countdown({until: $.countdown.UTCDate(+10, 2023, 2, 17), format: 'DHMS'});
-  }
-}
-
 // Initialize Forms
 function initForms() {
-  // Mailchimp Notify Form
-  if ($.fn.ajaxChimp) {
-    $('.notify-form').ajaxChimp({
-      callback: mailchimpCallback,
-      url: 'https://besaba.us10.list-manage.com/subscribe/post?u=e8d650c0df90e716c22ae4778&amp;id=54a7906900'
-    });
-  }
-
   // Contact Form Submission
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
@@ -509,7 +471,7 @@ function initForms() {
       const company = form.querySelector('input[name="Company"]').value;
       const phone = form.querySelector('input[name="Phone"]').value;
       const message = form.querySelector('textarea[name="Message"]').value;
-      const mailtoLink = `mailto:bardia@mizegerd.agency?subject=${encodeURIComponent(name)} - ${encodeURIComponent(company)}&body=Phone number: ${encodeURIComponent(phone)}%0A%0A${encodeURIComponent(message)}`;
+      const mailtoLink = `mailto:contact@tom-bury.fr?subject=${encodeURIComponent(name)} - ${encodeURIComponent(company)}&body=Phone number: ${encodeURIComponent(phone)}%0A%0A${encodeURIComponent(message)}`;
       window.location.href = mailtoLink;
       
       const contactSection = document.querySelector('.contact');
@@ -525,47 +487,6 @@ function initForms() {
       }
     });
   }
-}
-
-// Mailchimp callback function
-function mailchimpCallback(resp) {
-  if (resp.result === 'success') {
-    handleFormSuccess('.notify');
-  } else if (resp.result === 'error') {
-    handleFormError('.notify');
-  }
-}
-
-// Handle form success
-function handleFormSuccess(selector) {
-  const element = document.querySelector(selector);
-  if (!element) return;
-  
-  element.querySelector('.form').classList.add('is-hidden');
-  element.querySelector('.subscription-ok').classList.add('is-visible');
-  
-  setTimeout(function() {
-    element.querySelector('.subscription-ok').classList.remove('is-visible');
-    element.querySelector('.form').classList.remove('is-hidden');
-    const form = element.querySelector('form');
-    if (form) form.reset();
-  }, 5000);
-}
-
-// Handle form error
-function handleFormError(selector) {
-  const element = document.querySelector(selector);
-  if (!element) return;
-  
-  element.querySelector('.form').classList.add('is-hidden');
-  element.querySelector('.subscription-error').classList.add('is-visible');
-  
-  setTimeout(function() {
-    element.querySelector('.subscription-error').classList.remove('is-visible');
-    element.querySelector('.form').classList.remove('is-hidden');
-    const form = element.querySelector('form');
-    if (form) form.reset();
-  }, 5000);
 }
 
 // Initialize share buttons

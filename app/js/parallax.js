@@ -50,6 +50,7 @@
   }
 
   // --- Inner sections: scroll parallax on media images ---
+  const mobileMQ = window.matchMedia('(max-width: 768px)');
   const AMPLITUDE = 50; // px of travel; image is scaled 1.12 to avoid gaps
   let ticking = false;
 
@@ -67,7 +68,7 @@
 
   function update() {
     ticking = false;
-    document.querySelectorAll('.inner.animate-in .media__image').forEach(function (img) {
+    document.querySelectorAll(mobileMQ.matches ? '.inner .media__image' : '.inner.animate-in .media__image').forEach(function (img) {
       const p = Math.max(-1, Math.min(1, progress(img)));
       img.style.transform = 'translate3d(0,' + (-p * AMPLITUDE).toFixed(2) + 'px,0) scale(1.12)';
     });

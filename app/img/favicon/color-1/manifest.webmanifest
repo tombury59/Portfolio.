@@ -4,8 +4,8 @@
   "description": "Portfolio de Tom Bury - Développeur Full-Stack",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#120b20",
-  "theme_color": "#1e3a8a",
+  "background_color": "#060b1a",
+  "theme_color": "#060b1a",
   "icons": [
     {
       "src": "/img/favicon/color-1/android-icon-192.png",

@@ -27,24 +27,29 @@
   <link rel="manifest" href="img/favicon/color-1/manifest.webmanifest">
   <!-- Template Favicon & Icons End -->
 
-  <!-- Facebook Metadata Start -->
-  <meta property="og:image:height" content="1200">
-  <meta property="og:image:width" content="630">
+  <link rel="canonical" href="https://tom-bury.fr/">
+
+  <!-- Open Graph (Facebook, LinkedIn, WhatsApp) Start -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Tom Bury">
+  <meta property="og:locale" content="fr_FR">
   <meta property="og:title" content="Tom Bury - Développeur Full-Stack">
   <meta property="og:description"
     content="Développeur full-stack basé à Angers. De l'architecture back-end à l'interface, j'aime toucher à toute la chaîne.">
-  <meta property="og:url" content="https://tom-bury.fr">
+  <meta property="og:url" content="https://tom-bury.fr/">
   <meta property="og:image" content="https://tom-bury.fr/img/favicon/og-image.png">
-  <meta property="og:type" content="website">
-  <!-- Facebook Metadata End -->
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tom Bury, développeur full-stack : Laravel, Vue.js, API REST, Docker">
+  <!-- Open Graph End -->
 
   <!-- X Metadata Start -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="https://tom-bury.fr">
   <meta name="twitter:title" content="Tom Bury - Développeur Full-Stack">
   <meta name="twitter:description"
     content="Développeur full-stack basé à Angers. De l'architecture back-end à l'interface, j'aime toucher à toute la chaîne.">
   <meta name="twitter:image" content="https://tom-bury.fr/img/favicon/og-image.png">
+  <meta name="twitter:image:alt" content="Tom Bury, développeur full-stack : Laravel, Vue.js, API REST, Docker">
   <!-- X Metadata End -->
 
   <!-- Preload Critical Resources -->
@@ -64,9 +69,9 @@
   <!-- Template Styles End -->
 
   <!-- Custom Browser Color Start -->
-  <meta name="theme-color" content="#1e3a8a">
-  <meta name="msapplication-navbutton-color" content="#1e3a8a">
-  <meta name="apple-mobile-web-app-status-bar-style" content="#1e3a8a">
+  <meta name="theme-color" content="#060b1a">
+  <meta name="msapplication-navbutton-color" content="#060b1a">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <!-- Custom Browser Color End -->
 
   <!-- Structured Data -->
@@ -203,7 +208,7 @@
           <!-- Main Headline Start -->
           <div class="main__headline">
             <div class="headline__content">
-              <span class="headline__subtitle light loading-el loading-el-1">Bonjour, je suis Tom Bury</span>
+              <span class="headline__subtitle light loading-el loading-el-1">Salut, c'est Tom Bury !</span>
               <h1 class="animated-headline light loading-el loading-el-2">
                 <span id="typed-strings">
                   <b>Développeur Full-Stack</b>
@@ -215,7 +220,7 @@
               <pre class="headline__text light loading-el loading-el-3">
 De l'architecture back-end à l'interface,
 j'aime toucher à toute la chaîne.
-Explorez le menu en haut à droite.
+<span class="desktop-only">Explorez le menu en haut à droite.</span><span class="mobile-only">Naviguez avec la barre en bas de l'écran.</span>
                 </pre>
               <div class="headline__btnholder loading-el loading-el-4">
                 <a href="mailto:contact@tom-bury.fr?subject=Message%20depuis%20votre%20site" class="btn btn-solid">
@@ -225,72 +230,6 @@ Explorez le menu en haut à droite.
             </div>
           </div>
           <!-- Main Headline End -->
-
-          <!-- Notify Me Popup Start -->
-          <div id="notify" class="notify dark">
-            <div class="notify__container">
-
-              <!-- Notify Me Close Button Start -->
-              <a id="notify-close" class="section-close light" href="#0"><span></span></a>
-              <!-- Notify Me Close Button End -->
-
-              <!-- Notify Me Content Start -->
-              <div class="notify__content">
-
-                <!-- Notify Me Headline Start -->
-                <div class="inner__container notify-width popup__headline">
-                  <span class="popup__subtitle light transition-el transition-el-1">Stay in touch</span>
-                  <p class="popup__title light transition-el transition-el-2">I`m always here</p>
-                  <p class="popup__text light transition-el transition-el-3">Enter your Email and I'm always delighted
-                    to respond to your inquiries.</p>
-                </div>
-                <!-- Notify Me Headline End -->
-
-                <!-- Notify Me Form Block Start -->
-                <div class="inner__container grid-block notify-width popup__form">
-                  <div class="form-container">
-
-                    <!-- Notify Me Reply Messages Start-->
-                    <div class="reply-group subscription-ok">
-                      <i class="fa-solid fa-circle-check reply-group__icon light"></i>
-                      <p class="reply-group__title light">Done!</p>
-                      <span class="reply-group__text light">Thanks for subscribing. I will contact you in right
-                        time.</span>
-                    </div>
-                    <div class="reply-group subscription-error">
-                      <i class="fa-solid fa-face-frown-open reply-group__icon light"></i>
-                      <p class="reply-group__title light">Ooops!</p>
-                      <span class="reply-group__text light">Something went wrong. Please try again.</span>
-                    </div>
-                    <!-- Notify Me Reply Messages End-->
-
-                    <!-- Notify Me Form Start-->
-                    <form class="form form-light notify-form" id="notify-form">
-                      <div class="container-fluid px-4">
-                        <div class="row gx-5">
-                          <div class="col-12">
-                            <input class="margin-s transition-el transition-el-4" type="email"
-                              placeholder="Email Adress*" required autocomplete="on">
-                            <span class="inputs-description transition-el transition-el-4">*Required fields</span>
-                            <button class="btn btn-solid transition-el transition-el-5" type="submit">
-                              <span class="btn-caption">Subscribe </span>
-                            </button>
-                          </div>
-                        </div>
-                      </div>
-                    </form>
-                    <!-- Notify Me Form End-->
-
-                  </div>
-                </div>
-                <!-- Notify Me Form Block End -->
-
-              </div>
-              <!-- Notify Me Content Start -->
-
-            </div>
-          </div>
-          <!-- Notify Me Popup End -->
 
           <!-- Main Socials Text Start -->
           <div class="main__dataline">
@@ -1086,10 +1025,28 @@ Explorez le menu en haut à droite.
   </div>
 
   <!-- Load Scripts Start -->
+  <!-- Mobile dock Start -->
+  <nav class="dock" aria-label="Navigation mobile">
+    <a class="dock__item is-active" href="#main" data-target="main" aria-label="Accueil">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h5v-6h4v6h5V10"/></svg><span>Accueil</span>
+    </a>
+    <a class="dock__item" href="#about" data-target="about" aria-label="À propos">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Profil</span>
+    </a>
+    <a class="dock__item" href="#works" data-target="works" aria-label="Projets">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span>Projets</span>
+    </a>
+    <a class="dock__item" href="#contact" data-target="contact" aria-label="Contact">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Contact</span>
+    </a>
+  </nav>
+  <!-- Mobile dock End -->
+
   <script src="js/libs.min.js" defer></script>
   <script src="js/gallery-init.js" defer></script>
   <script src="js/custom.js" defer></script>
   <script src="js/parallax.js" defer></script>
+  <script src="js/mobile.js" defer></script>
   <!-- Load Scripts End -->
 
   <!-- Project Sharing Scripts Start -->
