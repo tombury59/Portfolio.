@@ -266,7 +266,7 @@ h2::after { background-color: #4d84cc; }
 
 /* Dark theme leftovers (quote block, small notes) */
 blockquote cite, blockquote cite span { color: rgba(255, 255, 255, 0.6); }
-blockquote::before { filter: invert(1); opacity: 0.35; }
+blockquote::before { filter: none; opacity: 1; }
 .project-details .inputs-description { color: rgba(255, 255, 255, 0.5); }
 
 /* Mobile / tablet (single column layout) */
@@ -491,3 +491,55 @@ p.additional-text { color: rgba(255, 255, 255, 0.55); }
 }
 .mail-toast.show { opacity: 1; transform: translate(-50%, 0); }
 @media (max-width: 768px) { .mail-toast { bottom: 10rem; } }
+
+/* Skill bars: no percentage, thicker filled bar */
+.skillbar { height: 4rem; border-bottom: 0; }
+.skillbar::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px;
+  border-radius: 4px; background: rgba(255, 255, 255, 0.1);
+}
+.skillbar-title { height: 3.4rem; }
+.skillbar-bar {
+  z-index: 1; bottom: 0; height: 4px; border-radius: 4px;
+  background: linear-gradient(90deg, #2f5a9e, #4d84cc);
+  box-shadow: 0 0 14px rgba(77, 132, 204, 0.45);
+}
+.skill-bar-percent { display: none; }
+
+/* Fill width comes from --p (set per bar in the HTML); animated with a CSS scale */
+.skillbar-bar {
+  width: var(--p, 0%) !important;
+  transform-origin: left center;
+  animation: skillfill 1.4s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes skillfill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .skillbar-bar { animation: none; } }
+
+/* Closing line, just above the contact block */
+.closing-line {
+  margin: 0 0 3.6rem; padding-left: 1.6rem;
+  border-left: 3px solid #4d84cc;
+  font: italic 300 2.2rem/1.4 "IBMPlexSans", serif;
+  color: #e8ecf5;
+}
+
+/* Screenshot covers: slightly darkened, with the project title on top */
+.project-image-container--shot { position: relative; }
+.project-image-container--shot .project-image {
+  filter: brightness(0.9);
+  transition: filter 0.4s ease, transform 0.5s ease;
+}
+.project-image-container--shot:hover .project-image { filter: brightness(1); }
+.project-image-container--shot::before {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(to top, rgba(6, 11, 26, 0.85) 0%, rgba(6, 11, 26, 0.35) 28%, rgba(6, 11, 26, 0) 55%);
+}
+.project-image-container--shot::after {
+  content: attr(data-title);
+  position: absolute; left: 2.2rem; right: 2.2rem; bottom: 1.8rem; z-index: 2; pointer-events: none;
+  font: 600 2.6rem/1.1 "IBMPlexSans", sans-serif; letter-spacing: -0.05rem;
+  color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.6);
+}
+@media (max-width: 768px) {
+  .project-image-container--shot::after { font-size: 2.2rem; left: 1.6rem; bottom: 1.4rem; }
+}
