@@ -421,3 +421,57 @@ p.additional-text { color: rgba(255, 255, 255, 0.55); }
   .mobile-only { display: inline; }
   .skillbar-title { font-size: 2rem; letter-spacing: -0.05rem; max-width: 78%; }
 }
+
+/* =====================================================
+   Projects: card grid (replaces the zig-zag image/text rows)
+   ===================================================== */
+#works .inner__block.no-padding {
+  display: grid; grid-template-columns: 1fr; gap: 2.4rem;
+  padding: 0 10% 8rem;
+}
+@media (min-width: 769px) and (max-width: 1199px) {
+  #works .inner__block.no-padding { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1200px) { #works .inner__block.no-padding { padding: 0 8rem 8rem; } }
+@media (min-width: 1400px) { #works .inner__block.no-padding { padding: 0 10rem 8rem; } }
+@media (max-width: 768px)  { #works .inner__block.no-padding { padding: 0 5% 8rem; gap: 2rem; } }
+
+#works .inner__container.project-container {
+  margin: 0; padding: 1.4rem;
+  display: flex; flex-direction: column;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.35s, background-color 0.35s;
+}
+#works .inner__container.project-container:hover {
+  transform: translateY(-4px);
+  border-color: rgba(77, 132, 204, 0.5);
+  background-color: rgba(77, 132, 204, 0.06);
+}
+#works .project-container .row,
+#works .project-container .row.flex-row-reverse {
+  flex: 1; flex-direction: column !important; margin: 0; --bs-gutter-x: 0;
+}
+#works .project-container .row > [class*="col-"] {
+  width: 100%; max-width: 100%; flex: 0 0 auto; padding: 0;
+}
+#works .project-container .row > [class*="col-"]:last-child { flex: 1 1 auto; }
+
+#works .project-image-container { margin: 0 0 1.6rem; border-radius: 16px; box-shadow: none; }
+#works .project-details { display: flex; flex-direction: column; height: 100%; padding: 0 0.6rem 0.6rem; }
+#works .project-details h3 { font-size: 2.6rem; line-height: 1.15; margin-bottom: 0.6rem; }
+#works .project-details h5 {
+  font-size: 1.2rem; font-style: normal; letter-spacing: 0.14rem; text-transform: uppercase;
+  color: #4d84cc; margin-bottom: 1.2rem;
+}
+#works .project-details p { font-size: 1.5rem; line-height: 1.65; margin-bottom: 1.6rem; }
+#works .project-details .btn,
+#works .project-details .inputs-description { margin-top: auto; align-self: flex-start; }
+
+/* The cover image already shows title, subtitle and stack: keep them for screen readers only */
+#works .project-details h3,
+#works .project-details h5 {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}

@@ -1,48 +1,32 @@
-# 💼💡 Portfolio: My Personal Website
+# Portfolio — Tom Bury
 
-🌟 Welcome to my personal portfolio website's GitHub repository! This site is a testament to my skills in modern web design, utilizing technologies like JavaScript, CSS, HTML, and Sass to create a visually appealing and responsive experience.
+Portfolio personnel de Tom Bury, développeur full-stack basé à Angers.
+En ligne : [tom-bury.fr](https://tom-bury.fr)
 
-🔗 Check out the live site here: [Click Me!](https://barry.software/app)
+## Contenu
 
-## 📚 Topics
+- Présentation, compétences, expérience et formation
+- Projets (NegoCRM, Prono Ping, Synergia, Wishlist, PhoBee…)
+- Contact
 
-- `javascript` 🟨
-- `css` 🔵
-- `html` 🟥
-- `sass` 🎨
-- `portfolio` 📁
-- `modern` 🆕
-- `css3` ✨
-- `portfolio-website` 💻
-- `html-css-javascript` 🌐
-- `portfolio-template` 📝
-- `portfolio-website-html-css` 🖥️
+## Stack
 
-## 📄 Resources
+HTML, CSS (Sass), JavaScript — site 100 % statique, sans build obligatoire.
+Thème sombre, parallaxe, et une version mobile dédiée (barre de navigation flottante).
 
-- **Readme**: 📘 Comprehensive guide to understand and navigate this project.
-- **License**: 📜 MIT License.
+## Lancer en local
 
-## ⭐ Activity
+Servir le dossier `app/` avec un petit serveur :
 
-- **Stars**: 0 stars ⭐ (Be the first one to star it!)
-- **Watchers**: 1 watching 👀
-- **Forks**: 0 forks 🍴
+```
+cd app
+npx serve .
+```
 
-## 🚀 Deployments
+## Déploiement
 
-- **Latest Deployment**: github-pages, 2 minutes ago ⏰
-- **Total Deployments**: 20 deployments 🏗️
+Envoyer le contenu de `app/` sur l'hébergement. Détails dans [DEPLOIEMENT.md](DEPLOIEMENT.md).
 
-## 🛠️ Languages Used
+## Crédits
 
-- **CSS**: 74.6% 🎨
-- **Sass**: 10.9% 👚
-- **HTML**: 9.2% 📄
-- **JavaScript**: 5.1% 🟨
-- **SCSS**: 0.2% 🧵
-
----
-
-🤝 Feel free to contribute or suggest improvements to this project!
-
+Basé sur le template [Personal-Website](https://github.com/barry-far/Personal-Website) de Barry Fardar (licence MIT), adapté et modifié.
