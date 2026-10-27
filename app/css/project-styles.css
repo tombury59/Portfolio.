@@ -187,3 +187,58 @@
     transform: translateY(0);
   }
 }
+/* Dark theme: replace light sections with deep navy */
+body,
+.inner { background-color: #080e1e; }
+.bg-medium { background-color: #0b1326; }
+.bg-light { background-color: #0e1730; }
+
+.bg-medium h1, .bg-medium h2, .bg-medium h3, .bg-medium h4, .bg-medium h5,
+.bg-light h1, .bg-light h2, .bg-light h3, .bg-light h4, .bg-light h5,
+.bg-medium .section__subtitle, .bg-medium .block__subtitle, .bg-medium .skillbar-title,
+.bg-medium .skill-bar-percent, .bg-medium .section__text span,
+.bg-light .section__subtitle, .bg-light .block__subtitle,
+.bg-medium .team__title, .bg-light .team__title { color: #e8ecf5; }
+
+.bg-medium p, .bg-light p,
+.bg-medium .section__text, .bg-medium .block__text,
+.bg-light .section__text, .bg-light .block__text,
+.bg-medium h4 small, .bg-light h4 small,
+.bg-medium .team__text, .bg-light .team__text { color: rgba(255, 255, 255, 0.7); }
+
+.bg-medium a, .bg-light a { color: #e8ecf5; }
+.bg-medium .contact-data__text, .bg-medium .contact-data__text a,
+.bg-medium .contact-data__socials li a,
+.bg-light .contact-data__text, .bg-light .contact-data__text a,
+.bg-light .contact-data__socials li a { color: rgba(255, 255, 255, 0.6); }
+
+.bg-medium .form-dark input, .bg-medium .form-dark textarea,
+.bg-light .form-dark input, .bg-light .form-dark textarea {
+  color: #e8ecf5; border-color: rgba(255, 255, 255, 0.3);
+}
+.bg-medium .form-dark ::placeholder, .bg-light .form-dark ::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+.project-direct-link { background: #131d38; color: #e8ecf5; }
+.project-direct-link:hover { background: #1a2748; }
+.project-direct-link::after, .project-qr-container p { color: rgba(255, 255, 255, 0.6); }
+
+/* Dark blocks: ensure text stays readable even without the .light class */
+.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4, .bg-dark h5,
+.bg-dark .section__subtitle, .bg-dark .block__subtitle { color: #e8ecf5; }
+.bg-dark p, .bg-dark .section__text, .bg-dark .block__text,
+.bg-dark h4 small { color: rgba(255, 255, 255, 0.7); }
+.bg-dark .Certifications__date, .bg-medium .Certifications__date, .bg-light .Certifications__date { color: rgba(255, 255, 255, 0.5); }
+.bg-dark .Certification__ex img,
+.bg-medium .Certification__ex img,
+.bg-light .Certification__ex img { filter: invert(1) brightness(0.9); }
+.bg-dark a:not(.btn):not(.btn-solid) { color: #e8ecf5; }
+.bg-dark .section__text span { color: #e8ecf5; }
+.bg-dark h2::after, .bg-medium h2::after, .bg-light h2::after { background-color: #4d84cc; }
+
+/* Global dark theme text (covers blocks with no bg-* class, e.g. Expérience / Formation) */
+h1, h2, h3, h4, h5, .section__subtitle, .block__subtitle, .team__title, .skillbar-title,
+.skill-bar-percent, .section__text span, .section__text a { color: #e8ecf5; }
+p, .section__text, .block__text, h4 small, .team__text { color: rgba(255, 255, 255, 0.7); }
+.Certifications__date { color: rgba(255, 255, 255, 0.5); }
+.Certification__ex img { filter: invert(1) brightness(0.9); }
+h2::after { background-color: #4d84cc; }

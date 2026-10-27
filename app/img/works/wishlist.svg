@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" font-family="'IBM Plex Sans','Segoe UI',Arial,sans-serif">
   <defs>
     <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#2a1a3e"/><stop offset="1" stop-color="#120b20"/>
+      <stop offset="0" stop-color="#0f1a33"/><stop offset="1" stop-color="#060b1a"/>
     </linearGradient>
     <radialGradient id="glow" cx="0.8" cy="0.15" r="0.9">
-      <stop offset="0" stop-color="#9854c5" stop-opacity="0.45"/><stop offset="1" stop-color="#9854c5" stop-opacity="0"/>
+      <stop offset="0" stop-color="#2f5a9e" stop-opacity="0.45"/><stop offset="1" stop-color="#2f5a9e" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="800" height="500" fill="url(#g)"/>
   <rect width="800" height="500" fill="url(#glow)"/>
-  <rect x="60" y="150" width="54" height="6" rx="3" fill="#9854c5"/>
-  <text x="60" y="130" fill="#b98fe0" font-size="22" font-weight="600" letter-spacing="4">APPLICATION WEB</text>
+  <rect x="60" y="150" width="54" height="6" rx="3" fill="#2f5a9e"/>
+  <text x="60" y="130" fill="#4d84cc" font-size="22" font-weight="600" letter-spacing="4">APPLICATION WEB</text>
   <text x="58" y="245" fill="#ffffff" font-size="72" font-weight="700" letter-spacing="-2">Wishlist</text>
-  <text x="60" y="300" fill="#cbb8e6" font-size="26" font-weight="400">Gestion de listes de souhaits</text>
+  <text x="60" y="300" fill="#a9bdd9" font-size="26" font-weight="400">Gestion de listes de souhaits</text>
   <g font-size="22" font-weight="600">
-    <rect x="60" y="400" width="160" height="46" rx="23" fill="#ffffff" fill-opacity="0.08" stroke="#9854c5" stroke-opacity="0.5"/><text x="140" y="430" fill="#e9ddf7" text-anchor="middle">JavaScript</text>
+    <rect x="60" y="400" width="160" height="46" rx="23" fill="#ffffff" fill-opacity="0.08" stroke="#2f5a9e" stroke-opacity="0.5"/><text x="140" y="430" fill="#dbe4f3" text-anchor="middle">JavaScript</text>
   </g>
 </svg>
