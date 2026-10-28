@@ -2,6 +2,7 @@
 <html lang="fr" dir="ltr">
 
 <head>
+  <script>document.documentElement.className+=("ontouchstart" in window||navigator.maxTouchPoints>0)?" touch":" no-touch";</script>
   <meta charset="utf-8">
 
   <!-- Page Title -->
@@ -61,11 +62,11 @@
   <link rel="preload" href="fonts/IBMPlexSans-Light/IBMPlexSans-Light.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/Roboto-Light/Roboto-Light.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="js/libs.min.js" as="script">
+  <link rel="preload" href="js/libs.lite.js" as="script">
 
   <!-- Template Styles Start -->
   <!-- Built by tools/build-css.js (loader + plugins + main + colors + project styles). Bump ?v= after each rebuild. -->
-  <link rel="stylesheet" type="text/css" href="css/site.min.css?v=2">
+  <link rel="stylesheet" type="text/css" href="css/site.min.css?v=3">
   <!-- Template Styles End -->
 
   <!-- Custom Browser Color Start -->
@@ -1002,6 +1003,19 @@ j'aime toucher à toute la chaîne.
   </div>
 
   <!-- Load Scripts Start -->
+  <script>
+    // Page reveal: independent from the (deferred) JS bundles so the hero shows as soon as the HTML and CSS are ready.
+    setTimeout(function () {
+      var logo = document.querySelector(".loader__logo");
+      if (logo) { logo.classList.remove("fadeIn"); logo.classList.add("fadeOut"); }
+    }, 100);
+    setTimeout(function () {
+      document.body.classList.add("loaded");
+      document.body.classList.remove("overflow-hidden");
+      var loader = document.querySelector(".loader");
+      if (loader) { loader.classList.add("fade", "loaded"); }
+    }, 300);
+  </script>
   <!-- Mobile dock Start -->
   <nav class="dock" aria-label="Navigation mobile">
     <a class="dock__item is-active" href="#main" data-target="main" aria-label="Accueil">
@@ -1019,7 +1033,7 @@ j'aime toucher à toute la chaîne.
   </nav>
   <!-- Mobile dock End -->
 
-  <script src="js/libs.min.js" defer></script>
+  <script src="js/libs.lite.js" defer></script>
   <script src="js/gallery-init.js" defer></script>
   <script src="js/custom.js" defer></script>
   <script src="js/parallax.js" defer></script>

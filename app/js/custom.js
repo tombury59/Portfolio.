@@ -118,24 +118,7 @@ function initEventListeners() {
 // Start the page as soon as the DOM is ready: waiting for the window "load" event
 // (every image, font and script) delayed the first visible content by seconds on slow networks.
 function startSite() {
-  // Loader & Main Section Loading Animation
-  setTimeout(function(){
-    const loaderLogo = document.querySelector(".loader__logo");
-    if (loaderLogo) {
-      loaderLogo.classList.remove('fadeIn');
-      loaderLogo.classList.add('fadeOut');
-    }
-  }, 100);
-
-  setTimeout(function(){
-    document.body.classList.add('loaded');
-    document.body.classList.remove('overflow-hidden');
-
-    const loader = document.querySelector(".loader");
-    if (loader) {
-      loader.classList.add('fade', 'loaded');
-    }
-  }, 300);
+  // (the loader fade-out and the "loaded" state are handled by the inline script in index.html)
 
   // Initialize Typed.js
   initTyped();

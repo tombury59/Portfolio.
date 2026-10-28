@@ -68,12 +68,25 @@
 
   function update() {
     ticking = false;
-    document.querySelectorAll(mobileMQ.matches ? '.inner .media__image' : '.inner.animate-in .media__image').forEach(function (img) {
+    // Phones: only images near the viewport (sections below are skipped by content-visibility; measuring them would force their layout)
+    const imgs = mobileMQ.matches ? Array.from(nearImages) : document.querySelectorAll('.inner.animate-in .media__image');
+    imgs.forEach(function (img) {
       const p = Math.max(-1, Math.min(1, progress(img)));
       img.style.transform = 'translate3d(0,' + (-p * AMPLITUDE).toFixed(2) + 'px,0) scale(1.12)';
     });
   }
 
+  // Images currently near the viewport (phones)
+  const nearImages = new Set();
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) nearImages.add(en.target); else nearImages.delete(en.target);
+      });
+      onScroll();
+    }, { rootMargin: '300px 0px' });
+    document.querySelectorAll('.inner .media__image').forEach(function (img) { io.observe(img); });
+  }
   function onScroll() {
     if (!ticking) {
       ticking = true;

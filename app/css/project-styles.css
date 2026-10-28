@@ -599,3 +599,9 @@ p.additional-text a, p.additional-text a.light { color: #fff; text-decoration: u
 
 /* Phones: the animated triangles are not started, so no parallax layers either */
 @media (max-width: 768px) { .parallax-layer { display: none; } }
+
+/* Phones: the page is one long scroll. Let the browser skip layout and paint of the sections
+   that are far below the viewport; they render as the user gets close. */
+@media (max-width: 768px) {
+  .inner { content-visibility: auto; contain-intrinsic-size: auto 1800px; }
+}
