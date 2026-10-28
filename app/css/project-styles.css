@@ -543,3 +543,38 @@ p.additional-text { color: rgba(255, 255, 255, 0.55); }
 @media (max-width: 768px) {
   .project-image-container--shot::after { font-size: 2.2rem; left: 1.6rem; bottom: 1.4rem; }
 }
+
+/* Mobile: hero image block, clean uniform backdrop (no half-faded gradient SVG) */
+@media (max-width: 768px) {
+  .main__media {
+    background-image: none;
+    background-color: #0b1326;
+    background: linear-gradient(180deg, #11224a 0%, #0b1326 100%);
+    padding: 3rem 5% 5.4rem;
+  }
+  .mainmedia__container { height: 40svh; min-height: 260px; max-height: 420px; }
+}
+
+/* Technology tags: icon only, white rounded squares, bottom-right of each project cover */
+.project-image-container { position: relative; }
+.project-tags {
+  position: absolute; bottom: 1.4rem; right: 1.4rem; z-index: 3;
+  display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.6rem;
+  max-width: calc(100% - 2.8rem); margin: 0; padding: 0; list-style: none;
+}
+.project-tags li {
+  display: flex; align-items: center; justify-content: center;
+  width: 4rem; height: 4rem; border-radius: 1.1rem;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+.project-tags img, .project-tags .tag-icon { width: 2.6rem; height: 2.6rem; display: block; }
+.project-tags .tag-icon { fill: none; stroke: #2f5a9e; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+/* keep the title clear of the icons */
+.project-image-container--shot::after { right: 15.5rem; }
+@media (max-width: 768px) {
+  .project-tags { bottom: 1.1rem; right: 1.1rem; gap: 0.5rem; }
+  .project-tags li { width: 3.4rem; height: 3.4rem; border-radius: 1rem; }
+  .project-tags img, .project-tags .tag-icon { width: 2.2rem; height: 2.2rem; }
+  .project-image-container--shot::after { right: 13rem; }
+}
