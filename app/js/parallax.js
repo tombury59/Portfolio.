@@ -69,10 +69,11 @@
   function update() {
     ticking = false;
     // Phones: only images near the viewport (sections below are skipped by content-visibility; measuring them would force their layout)
-    const imgs = mobileMQ.matches ? Array.from(nearImages) : document.querySelectorAll('.inner.animate-in .media__image');
-    imgs.forEach(function (img) {
-      const p = Math.max(-1, Math.min(1, progress(img)));
-      img.style.transform = 'translate3d(0,' + (-p * AMPLITUDE).toFixed(2) + 'px,0) scale(1.12)';
+    const imgs = Array.from(mobileMQ.matches ? nearImages : document.querySelectorAll('.inner.animate-in .media__image'));
+    // measure everything first, then write: interleaving reads and writes forces a layout per image
+    const shifts = imgs.map(function (img) { return Math.max(-1, Math.min(1, progress(img))); });
+    imgs.forEach(function (img, i) {
+      img.style.transform = 'translate3d(0,' + (-shifts[i] * AMPLITUDE).toFixed(2) + 'px,0) scale(1.12)';
     });
   }
 

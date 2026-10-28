@@ -32,7 +32,7 @@
 }
 
 .main-image-c1-2 {
-  background-image: url("../img/bg-3.jpg");
+  background-image: url("../img/bg-3.webp");
 }
 
 .main-image-c1-3 {
@@ -40,15 +40,15 @@
 }
 
 .about-image-c1 {
-  background-image: url("../img/bg-1.jpg");
+  background-image: url("../img/bg-1.webp");
 }
 
 .works-image-c1 {
-  background-image: url("../img/bg-2.jpg");
+  background-image: url("../img/bg-2.webp");
 }
 
 .contact-image-c1 {
-  background-image: url("../img/bg-3.jpg");
+  background-image: url("../img/bg-3.webp");
 }
 
 /* ------------------------------------------------*/
@@ -62,49 +62,49 @@
   font-family: "IBMPlexSans";
   font-style: normal;
   font-weight: 300;
-  src: url("../fonts/IBMPlexSans-Light/IBMPlexSans-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/IBMPlexSans-Light/IBMPlexSans-Light.woff2") format("woff2"), url("../fonts/IBMPlexSans-Light/IBMPlexSans-Light.woff") format("woff"), url("../fonts/IBMPlexSans-Light/IBMPlexSans-Light.ttf") format("truetype"), url("../fonts/IBMPlexSans-Light/IBMPlexSans-Light.svg#IBMPlexSans") format("svg");
+  src: url("../fonts/IBMPlexSans-Light/IBMPlexSans-Light.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "IBMPlexSans";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.woff2") format("woff2"), url("../fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.woff") format("woff"), url("../fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.ttf") format("truetype"), url("../fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.svg#IBMPlexSans") format("svg");
+  src: url("../fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "IBMPlexSans";
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/IBMPlexSans-Medium/IBMPlexSans-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/IBMPlexSans-Medium/IBMPlexSans-Medium.woff2") format("woff2"), url("../fonts/IBMPlexSans-Medium/IBMPlexSans-Medium.woff") format("woff"), url("../fonts/IBMPlexSans-Medium/IBMPlexSans-Medium.ttf") format("truetype"), url("../fonts/IBMPlexSans-Medium/IBMPlexSans-Medium.svg#IBMPlexSans") format("svg");
+  src: url("../fonts/IBMPlexSans-Medium/IBMPlexSans-Medium.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "IBMPlexSans";
   font-style: normal;
   font-weight: 600;
-  src: url("../fonts/IBMPlexSans-SemiBold/IBMPlexSans-SemiBold.eot?#iefix") format("embedded-opentype"), url("../fonts/IBMPlexSans-SemiBold/IBMPlexSans-SemiBold.woff2") format("woff2"), url("../fonts/IBMPlexSans-SemiBold/IBMPlexSans-SemiBold.woff") format("woff"), url("../fonts/IBMPlexSans-SemiBold/IBMPlexSans-SemiBold.ttf") format("truetype"), url("../fonts/IBMPlexSans-SemiBold/IBMPlexSans-SemiBold.svg#IBMPlexSans") format("svg");
+  src: url("../fonts/IBMPlexSans-SemiBold/IBMPlexSans-SemiBold.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 300;
-  src: url("../fonts/Roboto-Light/Roboto-Light.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Light/Roboto-Light.woff2") format("woff2"), url("../fonts/Roboto-Light/Roboto-Light.woff") format("woff"), url("../fonts/Roboto-Light/Roboto-Light.ttf") format("truetype"), url("../fonts/Roboto-Light/Roboto-Light.svg#Roboto") format("svg");
+  src: url("../fonts/Roboto-Light/Roboto-Light.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  src: url("../fonts/Roboto-Regular/Roboto-Regular.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Regular/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular/Roboto-Regular.woff") format("woff"), url("../fonts/Roboto-Regular/Roboto-Regular.ttf") format("truetype"), url("../fonts/Roboto-Regular/Roboto-Regular.svg#Roboto") format("svg");
+  src: url("../fonts/Roboto-Regular/Roboto-Regular.woff2") format("woff2");
 }
 @font-face {
   font-display: swap;
   font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
-  src: url("../fonts/Roboto-Medium/Roboto-Medium.eot?#iefix") format("embedded-opentype"), url("../fonts/Roboto-Medium/Roboto-Medium.woff2") format("woff2"), url("../fonts/Roboto-Medium/Roboto-Medium.woff") format("woff"), url("../fonts/Roboto-Medium/Roboto-Medium.ttf") format("truetype"), url("../fonts/Roboto-Medium/Roboto-Medium.svg#Roboto") format("svg");
+  src: url("../fonts/Roboto-Medium/Roboto-Medium.woff2") format("woff2");
 }
 /* ------------------------------------------------*/
 /* Fonts End */
@@ -413,52 +413,52 @@ body.loaded .main .main__headline .loading-el {
           transform: translateY(0);
 }
 body.loaded .main .main__headline .loading-el-1 {
-  -webkit-transition: opacity 0.4s 0.7s, -webkit-transform 0.4s 0.7s;
-  transition: opacity 0.4s 0.7s, -webkit-transform 0.4s 0.7s;
-  -o-transition: opacity 0.4s 0.7s, transform 0.4s 0.7s;
-  -moz-transition: opacity 0.4s 0.7s, transform 0.4s 0.7s, -moz-transform 0.4s 0.7s;
-  transition: opacity 0.4s 0.7s, transform 0.4s 0.7s;
-  transition: opacity 0.4s 0.7s, transform 0.4s 0.7s, -webkit-transform 0.4s 0.7s, -moz-transform 0.4s 0.7s;
+  -webkit-transition: opacity 0.4s 0.1s, -webkit-transform 0.4s 0.1s;
+  transition: opacity 0.4s 0.1s, -webkit-transform 0.4s 0.1s;
+  -o-transition: opacity 0.4s 0.1s, transform 0.4s 0.1s;
+  -moz-transition: opacity 0.4s 0.1s, transform 0.4s 0.1s, -moz-transform 0.4s 0.1s;
+  transition: opacity 0.4s 0.1s, transform 0.4s 0.1s;
+  transition: opacity 0.4s 0.1s, transform 0.4s 0.1s, -webkit-transform 0.4s 0.1s, -moz-transform 0.4s 0.1s;
 }
 body.loaded .main .main__headline .loading-el-2 {
-  -webkit-transition: opacity 0.4s 0.8s, -webkit-transform 0.4s 0.8s;
-  transition: opacity 0.4s 0.8s, -webkit-transform 0.4s 0.8s;
-  -o-transition: opacity 0.4s 0.8s, transform 0.4s 0.8s;
-  -moz-transition: opacity 0.4s 0.8s, transform 0.4s 0.8s, -moz-transform 0.4s 0.8s;
-  transition: opacity 0.4s 0.8s, transform 0.4s 0.8s;
-  transition: opacity 0.4s 0.8s, transform 0.4s 0.8s, -webkit-transform 0.4s 0.8s, -moz-transform 0.4s 0.8s;
+  -webkit-transition: opacity 0.4s 0.2s, -webkit-transform 0.4s 0.2s;
+  transition: opacity 0.4s 0.2s, -webkit-transform 0.4s 0.2s;
+  -o-transition: opacity 0.4s 0.2s, transform 0.4s 0.2s;
+  -moz-transition: opacity 0.4s 0.2s, transform 0.4s 0.2s, -moz-transform 0.4s 0.2s;
+  transition: opacity 0.4s 0.2s, transform 0.4s 0.2s;
+  transition: opacity 0.4s 0.2s, transform 0.4s 0.2s, -webkit-transform 0.4s 0.2s, -moz-transform 0.4s 0.2s;
 }
 body.loaded .main .main__headline .loading-el-3 {
-  -webkit-transition: opacity 0.4s 0.9s, -webkit-transform 0.4s 0.9s;
-  transition: opacity 0.4s 0.9s, -webkit-transform 0.4s 0.9s;
-  -o-transition: opacity 0.4s 0.9s, transform 0.4s 0.9s;
-  -moz-transition: opacity 0.4s 0.9s, transform 0.4s 0.9s, -moz-transform 0.4s 0.9s;
-  transition: opacity 0.4s 0.9s, transform 0.4s 0.9s;
-  transition: opacity 0.4s 0.9s, transform 0.4s 0.9s, -webkit-transform 0.4s 0.9s, -moz-transform 0.4s 0.9s;
+  -webkit-transition: opacity 0.4s 0.3s, -webkit-transform 0.4s 0.3s;
+  transition: opacity 0.4s 0.3s, -webkit-transform 0.4s 0.3s;
+  -o-transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
+  -moz-transition: opacity 0.4s 0.3s, transform 0.4s 0.3s, -moz-transform 0.4s 0.3s;
+  transition: opacity 0.4s 0.3s, transform 0.4s 0.3s;
+  transition: opacity 0.4s 0.3s, transform 0.4s 0.3s, -webkit-transform 0.4s 0.3s, -moz-transform 0.4s 0.3s;
 }
 body.loaded .main .main__headline .loading-el-4 {
-  -webkit-transition: opacity 0.4s 1s, -webkit-transform 0.4s 1s;
-  transition: opacity 0.4s 1s, -webkit-transform 0.4s 1s;
-  -o-transition: opacity 0.4s 1s, transform 0.4s 1s;
-  -moz-transition: opacity 0.4s 1s, transform 0.4s 1s, -moz-transform 0.4s 1s;
-  transition: opacity 0.4s 1s, transform 0.4s 1s;
-  transition: opacity 0.4s 1s, transform 0.4s 1s, -webkit-transform 0.4s 1s, -moz-transform 0.4s 1s;
+  -webkit-transition: opacity 0.4s 0.4s, -webkit-transform 0.4s 0.4s;
+  transition: opacity 0.4s 0.4s, -webkit-transform 0.4s 0.4s;
+  -o-transition: opacity 0.4s 0.4s, transform 0.4s 0.4s;
+  -moz-transition: opacity 0.4s 0.4s, transform 0.4s 0.4s, -moz-transform 0.4s 0.4s;
+  transition: opacity 0.4s 0.4s, transform 0.4s 0.4s;
+  transition: opacity 0.4s 0.4s, transform 0.4s 0.4s, -webkit-transform 0.4s 0.4s, -moz-transform 0.4s 0.4s;
 }
 body.loaded .main .main__header,
 body.loaded .main .main__socials,
 body.loaded .main .main__dataline {
   opacity: 1;
-  -webkit-transition: opacity 0.8s 1.4s;
-  -o-transition: opacity 0.8s 1.4s;
-  -moz-transition: opacity 0.8s 1.4s;
-  transition: opacity 0.8s 1.4s;
+  -webkit-transition: opacity 0.8s 0.6s;
+  -o-transition: opacity 0.8s 0.6s;
+  -moz-transition: opacity 0.8s 0.6s;
+  transition: opacity 0.8s 0.6s;
 }
 body.loaded .rotate-object {
   opacity: 1;
-  -webkit-transition: opacity 0.8s 1.4s;
-  -o-transition: opacity 0.8s 1.4s;
-  -moz-transition: opacity 0.8s 1.4s;
-  transition: opacity 0.8s 1.4s;
+  -webkit-transition: opacity 0.8s 0.6s;
+  -o-transition: opacity 0.8s 0.6s;
+  -moz-transition: opacity 0.8s 0.6s;
+  transition: opacity 0.8s 0.6s;
 }
 
 /* ------------------------------------------------*/
