@@ -134,6 +134,7 @@ if (document.readyState === 'loading') {
 
 // Initialize Typed.js
 function initTyped() {
+  if (window.innerWidth < 769) return; // phones: static headline (see index.html)
   const animatedHeadline = document.querySelector(".animated-headline");
   if (animatedHeadline && typeof Typed !== 'undefined') {
     new Typed('#typed', {

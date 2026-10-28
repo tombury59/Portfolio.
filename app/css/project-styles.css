@@ -605,3 +605,8 @@ p.additional-text a, p.additional-text a.light { color: #fff; text-decoration: u
 @media (max-width: 768px) {
   .inner { content-visibility: auto; contain-intrinsic-size: auto 1800px; }
 }
+
+/* Phones: the hero image block sits below the first screen; skip it until the user gets close */
+@media (max-width: 768px) {
+  .main__media { content-visibility: auto; contain-intrinsic-size: auto 560px; }
+}

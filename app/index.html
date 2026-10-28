@@ -58,15 +58,14 @@
   <!-- X Metadata End -->
 
   <!-- Preload Critical Resources -->
-  <link rel="preload" href="img/bg-3.jpg" as="image" fetchpriority="high">
-  <link rel="preload" href="fonts/IBMPlexSans-Light/IBMPlexSans-Light.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="fonts/Roboto-Light/Roboto-Light.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" href="js/libs.lite.js" as="script">
+  <link rel="preload" href="img/bg-3.jpg" as="image" fetchpriority="high" media="(min-width: 769px)">
+  <link rel="preload" href="fonts/IBMPlexSans-Light/IBMPlexSans-Light.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 769px)">
+  <link rel="preload" href="fonts/IBMPlexSans-Regular/IBMPlexSans-Regular.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 769px)">
+  <link rel="preload" href="fonts/Roboto-Light/Roboto-Light.woff2" as="font" type="font/woff2" crossorigin media="(min-width: 769px)">
 
   <!-- Template Styles Start -->
   <!-- Built by tools/build-css.js (loader + plugins + main + colors + project styles). Bump ?v= after each rebuild. -->
-  <link rel="stylesheet" type="text/css" href="css/site.min.css?v=3">
+  <link rel="stylesheet" type="text/css" href="css/site.min.css?v=4">
   <!-- Template Styles End -->
 
   <!-- Custom Browser Color Start -->
@@ -199,7 +198,7 @@
                   <img src="img/logo.svg" width="170" height="50" alt="Tom Bury - Portfolio">
                 </div>
                 <!-- menu trigger -->
-                <a href="#0" id="menu-trigger" class="menu-trigger"><span></span></a>
+                <a href="#0" id="menu-trigger" class="menu-trigger" aria-label="Ouvrir le menu"><span></span></a>
               </div>
             </div>
           </div>
@@ -1004,6 +1003,11 @@ j'aime toucher à toute la chaîne.
 
   <!-- Load Scripts Start -->
   <script>
+    // Phones: static headline (the typing animation waited for the JS bundle and delayed the first big paint).
+    if (window.innerWidth < 769) {
+      var typedEl = document.getElementById("typed");
+      if (typedEl) { typedEl.textContent = "Développeur Full-Stack"; }
+    }
     // Page reveal: independent from the (deferred) JS bundles so the hero shows as soon as the HTML and CSS are ready.
     setTimeout(function () {
       var logo = document.querySelector(".loader__logo");
