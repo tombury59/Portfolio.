@@ -30,3 +30,8 @@ Envoyer le contenu de `app/` sur l'hébergement. Détails dans [DEPLOIEMENT.md](
 ## Crédits
 
 Basé sur le template [Personal-Website](https://github.com/barry-far/Personal-Website) de Barry Fardar (licence MIT), adapté et modifié.
+
+## Build du CSS
+
+Le site charge un seul fichier, `app/css/site.min.css` (loader + plugins + main + couleurs + styles du projet).
+Après toute modification des fichiers CSS : `node tools/build-css.js`, puis incrémenter `?v=` dans `app/index.html`.

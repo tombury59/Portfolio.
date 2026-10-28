@@ -1,0 +1,5 @@
+# Cache static files (scoped to this folder only)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 year"
+</IfModule>

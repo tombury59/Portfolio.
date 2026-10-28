@@ -1,0 +1,8 @@
+# Cache static files (scoped to this folder only)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 week"
+</IfModule>
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/css application/javascript image/svg+xml application/json
+</IfModule>

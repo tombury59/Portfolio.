@@ -123,7 +123,7 @@ window.addEventListener("load", function() {
       loaderLogo.classList.remove('fadeIn');
       loaderLogo.classList.add('fadeOut');
     }
-  }, 600);
+  }, 200);
 
   setTimeout(function(){
     document.body.classList.add('loaded');
@@ -133,7 +133,7 @@ window.addEventListener("load", function() {
     if (loader) {
       loader.classList.add('fade', 'loaded');
     }
-  }, 1200);
+  }, 600);
 
   // Initialize Typed.js
   initTyped();
@@ -167,7 +167,7 @@ function initParticlesJS() {
     particlesJS('triangles-js', {
       particles: {
         number: {
-          value: 33,
+          value: (window.innerWidth < 769 ? 14 : 33),
           density: {
             enable: true,
             value_area: 1420.4657549380909
@@ -277,7 +277,7 @@ function initParticlesJS() {
   }
 
   // Triangles back layer (depth parallax, lighter and slower)
-  const bgndTrianglesBack = document.getElementById('triangles-back');
+  const bgndTrianglesBack = window.innerWidth < 769 ? null : document.getElementById('triangles-back');
   if (bgndTrianglesBack && typeof particlesJS !== 'undefined') {
     particlesJS('triangles-back', {
       particles: {
@@ -539,7 +539,7 @@ function copyProjectLink(projectId) {
     const copyButton = document.querySelector(`.share-btn.copy[data-project="${projectId}"]`);
     if (copyButton) {
       const originalContent = copyButton.innerHTML;
-      copyButton.innerHTML = '<i class="fa fa-check"></i>';
+      copyButton.innerHTML = '&#10003;';
       
       // Find the copied message element
       const copiedMessage = copyButton.closest('.share-container').nextElementSibling;

@@ -578,3 +578,21 @@ p.additional-text { color: rgba(255, 255, 255, 0.55); }
   .project-tags img, .project-tags .tag-icon { width: 2.2rem; height: 2.2rem; }
   .project-image-container--shot::after { right: 13rem; }
 }
+/* Social icons (inline SVG, replaces the Font Awesome 4 CDN font) */
+.social-icon { width: 1.8rem; height: 1.8rem; fill: currentColor; display: block; }
+.main__dataline .socials-text li a { color: #fff; }
+
+/* Faster loader: shorter fade in/out (the page was waiting ~1.2 s before showing) */
+.loader { transition-duration: 0.3s; }
+.loader__logo.fadeIn, .loader__logo.fadeOut { animation-duration: 0.3s; }
+
+/* "Fait avec ♥ par Tom Bury": was dark-on-blue, too low a contrast */
+p.additional-text { color: rgba(255, 255, 255, 0.78); }
+p.additional-text a, p.additional-text a.light { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+
+/* Heart icon (inline SVG) */
+.heart-icon { width: 1.1em; height: 1.1em; fill: currentColor; vertical-align: -0.15em; }
+
+/* Reserve two lines for the typed headline so the page does not jump while it types */
+.animated-headline { display: block; min-height: 2.4em; }
+@media (max-width: 768px) { .animated-headline { min-height: 2.2em; } }
