@@ -115,7 +115,9 @@ function initEventListeners() {
 }
 
 // Load handler
-window.addEventListener("load", function() {
+// Start the page as soon as the DOM is ready: waiting for the window "load" event
+// (every image, font and script) delayed the first visible content by seconds on slow networks.
+function startSite() {
   // Loader & Main Section Loading Animation
   setTimeout(function(){
     const loaderLogo = document.querySelector(".loader__logo");
@@ -123,27 +125,29 @@ window.addEventListener("load", function() {
       loaderLogo.classList.remove('fadeIn');
       loaderLogo.classList.add('fadeOut');
     }
-  }, 200);
+  }, 100);
 
   setTimeout(function(){
     document.body.classList.add('loaded');
     document.body.classList.remove('overflow-hidden');
-    
+
     const loader = document.querySelector(".loader");
     if (loader) {
       loader.classList.add('fade', 'loaded');
     }
-  }, 600);
+  }, 300);
 
   // Initialize Typed.js
   initTyped();
 
-  // Initialize ParticlesJS if present
+  // Initialize ParticlesJS if present (desktop only)
   initParticlesJS();
-
-  // Initialize event listeners
-  initEventListeners();
-});
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', startSite);
+} else {
+  startSite();
+}
 
 // Initialize Typed.js
 function initTyped() {
@@ -152,8 +156,8 @@ function initTyped() {
     new Typed('#typed', {
       stringsElement: '#typed-strings',
       loop: true,
-      typeSpeed: 80,
-      backSpeed: 30,
+      typeSpeed: 40,
+      backSpeed: 20,
       backDelay: 2500
     });
   }
@@ -162,7 +166,7 @@ function initTyped() {
 // Initialize ParticlesJS backgrounds
 function initParticlesJS() {
   // Triangles BG - particlesJS
-  const bgndTriangles = document.getElementById('triangles-js');
+  const bgndTriangles = window.innerWidth < 769 ? null : document.getElementById('triangles-js');
   if (bgndTriangles && typeof particlesJS !== 'undefined') {
     particlesJS('triangles-js', {
       particles: {

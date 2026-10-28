@@ -596,3 +596,6 @@ p.additional-text a, p.additional-text a.light { color: #fff; text-decoration: u
 /* Reserve two lines for the typed headline so the page does not jump while it types */
 .animated-headline { display: block; min-height: 2.4em; }
 @media (max-width: 768px) { .animated-headline { min-height: 2.2em; } }
+
+/* Phones: the animated triangles are not started, so no parallax layers either */
+@media (max-width: 768px) { .parallax-layer { display: none; } }

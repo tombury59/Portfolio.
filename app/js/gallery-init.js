@@ -293,15 +293,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Check if URL has project parameter and open correct panel
   handleUrlParameters();
-  
-  // Add stylesheet link to head if not already present
-  if (!document.querySelector('link[href="css/project-styles.css"]')) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.type = 'text/css';
-    link.href = 'css/project-styles.css';
-    document.head.appendChild(link);
-  }
 });
 
 /**
