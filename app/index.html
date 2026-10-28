@@ -65,7 +65,7 @@
 
   <!-- Template Styles Start -->
   <!-- Built by tools/build-css.js (loader + plugins + main + colors + project styles). Bump ?v= after each rebuild. -->
-  <link rel="stylesheet" type="text/css" href="css/site.min.css?v=4">
+  <link rel="stylesheet" type="text/css" href="css/site.min.css?v=5">
   <!-- Template Styles End -->
 
   <!-- Custom Browser Color Start -->
@@ -1003,10 +1003,10 @@ j'aime toucher à toute la chaîne.
 
   <!-- Load Scripts Start -->
   <script>
-    // Phones: static headline (the typing animation waited for the JS bundle and delayed the first big paint).
+    // Phones: the headline is plain text at first (the typing animation waited for the JS bundle and delayed the first big paint); custom.js animates it after the page has loaded.
     if (window.innerWidth < 769) {
       var typedEl = document.getElementById("typed");
-      if (typedEl) { typedEl.textContent = "Développeur Full-Stack"; }
+      if (typedEl) { typedEl.textContent = "Passionné d'auto-hébergement"; }
     }
     // Page reveal: independent from the (deferred) JS bundles so the hero shows as soon as the HTML and CSS are ready.
     setTimeout(function () {

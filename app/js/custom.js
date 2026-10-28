@@ -134,9 +134,10 @@ if (document.readyState === 'loading') {
 
 // Initialize Typed.js
 function initTyped() {
-  if (window.innerWidth < 769) return; // phones: static headline (see index.html)
   const animatedHeadline = document.querySelector(".animated-headline");
-  if (animatedHeadline && typeof Typed !== 'undefined') {
+  if (!animatedHeadline || typeof Typed === 'undefined') return;
+
+  const startTyping = function () {
     new Typed('#typed', {
       stringsElement: '#typed-strings',
       loop: true,
@@ -144,7 +145,26 @@ function initTyped() {
       backSpeed: 20,
       backDelay: 2500
     });
-  }
+  };
+
+  // Desktop: start right away.
+  if (window.innerWidth >= 769) { startTyping(); return; }
+
+  // Phones: index.html already shows the longest headline as plain text, so the first paint
+  // does not wait for this script. Once the page has finished loading, erase it, then type.
+  const el = document.getElementById('typed');
+  const eraseThenType = function () {
+    setTimeout(function () {
+      let text = el.textContent;
+      const timer = setInterval(function () {
+        text = text.slice(0, -1);
+        el.textContent = text;
+        if (!text) { clearInterval(timer); startTyping(); }
+      }, 22);
+    }, 700);
+  };
+  if (document.readyState === 'complete') eraseThenType();
+  else window.addEventListener('load', eraseThenType);
 }
 
 // Initialize ParticlesJS backgrounds

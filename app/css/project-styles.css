@@ -610,3 +610,7 @@ p.additional-text a, p.additional-text a.light { color: #fff; text-decoration: u
 @media (max-width: 768px) {
   .main__media { content-visibility: auto; contain-intrinsic-size: auto 560px; }
 }
+
+/* Source strings for the typing animation: never display them */
+#typed-strings { display: none; }
+@media (max-width: 768px) { .animated-headline { min-height: 3.3em; } }
