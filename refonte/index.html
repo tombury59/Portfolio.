@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tom Bury | Développeur Full-Stack</title>
+    <meta
+      name="description"
+      content="Tom Bury - Développeur full-stack basé à Angers. Laravel, Vue.js, API REST, Docker et auto-hébergement. Portfolio et projets."
+    />
+    <meta name="author" content="Tom Bury" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#060b1a" />
+    <link rel="canonical" href="https://tom-bury.fr/" />
+    <link rel="describedby" href="/llms.txt" type="text/plain" />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/img/favicon/color-1/icon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/img/favicon/color-1/favicon-48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/img/favicon/color-1/favicon-96.png" type="image/png" sizes="96x96" />
+    <link rel="icon" href="/img/favicon/color-1/android-icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/img/favicon/color-1/apple-touch-icon.png" />
+    <link rel="manifest" href="/img/favicon/color-1/manifest.webmanifest" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Tom Bury" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="Tom Bury - Développeur Full-Stack" />
+    <meta property="og:description" content="Embarquez pour un vol de nuit au-dessus de l'Anjou : le parcours d'un développeur full-stack basé à Angers, escale par escale." />
+    <meta property="og:url" content="https://tom-bury.fr/" />
+    <meta property="og:image" content="https://tom-bury.fr/img/favicon/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Tom Bury, développeur full-stack : Laravel, Vue.js, API REST, Docker" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tom Bury - Développeur Full-Stack" />
+    <meta name="twitter:description" content="Embarquez pour un vol de nuit au-dessus de l'Anjou : le parcours d'un développeur full-stack basé à Angers." />
+    <meta name="twitter:image" content="https://tom-bury.fr/img/favicon/og-image.png" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tom Bury",
+        "url": "https://tom-bury.fr",
+        "image": "https://tom-bury.fr/img/favicon/og-image.png",
+        "sameAs": ["https://www.linkedin.com/in/tom-bury-501534260/", "https://github.com/tombury59"],
+        "jobTitle": "Développeur Full-Stack",
+        "address": { "@type": "PostalAddress", "addressLocality": "Angers", "addressCountry": "FR" },
+        "worksFor": { "@type": "Organization", "name": "Negocom Atlantique" },
+        "knowsAbout": ["Développement web", "Laravel", "Vue.js", "API REST", "Docker", "PHP", "JavaScript", "TypeScript"],
+        "alumniOf": "My Digital School"
+      }
+    </script>
+    <script>
+      // decide the layout before the first paint; main.ts checks WebGL 2 for real and can undo it
+      if (window.WebGL2RenderingContext) document.documentElement.classList.add("has-3d");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#billets">Aller à l'itinéraire</a>
+
+    <header class="bar">
+      <a class="bar-name" href="#voyage">
+        <img src="/img/tb.svg" alt="" width="28" height="28" />
+        <span>Tom Bury</span>
+      </a>
+      <nav class="bar-nav" aria-label="Sections">
+        <a href="#voyage">Itinéraire</a>
+        <a href="#profil">Profil</a>
+        <a href="#projets">Projets</a>
+        <a class="bar-cta" href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- The trip. Without WebGL 2, the boarding passes below simply read as a list. -->
+      <section id="voyage" class="voyage" aria-label="Itinéraire">
+        <div class="cabin" id="cabin">
+          <canvas class="sky" id="sky" aria-hidden="true"></canvas>
+
+          <div class="welcome" id="welcome">
+            <p class="welcome-kicker"><span class="mono">VOL TB-26</span> · Angers, de nuit</p>
+            <h1>Tom Bury</h1>
+            <p class="welcome-role">Développeur full-stack · Laravel &amp; Vue.js</p>
+            <p class="welcome-text">
+              En alternance chez Negocom Atlantique et en MBA à My Digital School. De l'architecture back-end à l'interface,
+              j'aime toucher à toute la chaîne. Embarquez : huit escales au-dessus de l'Anjou, du bac jusqu'à mon alternance chez Negocom.
+            </p>
+            <div class="welcome-actions">
+              <button type="button" class="button" id="board">Embarquer <span aria-hidden="true">→</span></button>
+              <a class="button button-ghost" href="#projets">Voir les projets</a>
+            </div>
+            <p class="welcome-hint" aria-hidden="true"><span class="hint-wheel"></span> Faites défiler pour voler, ou maintenez le bouton en bas à droite</p>
+          </div>
+
+          <nav class="rail" id="rail" aria-label="Escales">
+            <ol></ol>
+          </nav>
+
+          <p class="hud" id="hud" aria-hidden="true"><span class="mono" data-hud>ESCALE 1/8</span></p>
+
+          <button type="button" class="autopilot" id="autopilot" aria-pressed="false">
+            <svg class="autopilot-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12M12 6l6 6-6 6" /></svg>
+            <svg class="autopilot-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6v12M15 6v12" /></svg>
+            <span class="autopilot-label">Pilote automatique</span>
+          </button>
+
+          <div class="tickets" id="billets" tabindex="-1">
+            <h2 class="tickets-title">Itinéraire</h2>
+            <ol class="ticket-list">
+              <li>
+                <article class="ticket" data-name="Bac" data-place="Le départ" data-kind="formation">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 01 / 08</span><b>Le départ</b></p>
+                    <h3>Baccalauréat général</h3>
+                    <p class="ticket-org">Lycée Albert Chatelet</p>
+                    <p class="ticket-text">Spécialités mathématiques et numérique et sciences informatiques (NSI) : les bases du code et de la logique. Obtenu avec mention bien.</p>
+                    <ul class="tags">
+                      <li>Maths · NSI</li>
+                      <li>Mention bien</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">2019–2022</b></p>
+                    <p><span>Diplôme</span><b>Mention bien</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="BTS SIO" data-place="Angers" data-kind="formation">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 02 / 08</span><b>Angers</b></p>
+                    <h3>BTS SIO option SLAM</h3>
+                    <p class="ticket-org">Lycée Chevrollier</p>
+                    <p class="ticket-text">Deux ans pour toucher à tous les aspects de l'informatique, avec le développement et la conception web en fil rouge.</p>
+                    <ul class="tags">
+                      <li><a href="https://github.com/TTRAP-PROJECT/Synergia-Portal">Synergia</a></li>
+                      <li>PHP · Laravel · SQL</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">2022–2024</b></p>
+                    <p><span>Diplôme</span><b>BTS obtenu</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="Le Champenais" data-place="Maine-et-Loire" data-kind="experience">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 03 / 08</span><b>Maine-et-Loire</b></p>
+                    <h3>Développeur web · stage</h3>
+                    <p class="ticket-org">Le Champenais</p>
+                    <p class="ticket-text">Six semaines au sein d'un bar-restaurant, pour développer sa visibilité sur le web : partir du besoin d'un commerce et y répondre avec les bons outils.</p>
+                    <ul class="tags">
+                      <li>Visibilité web</li>
+                      <li>6 semaines</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">Mai–juin 2023</b></p>
+                    <p><span>Pendant</span><b>le BTS SIO</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="Ecolab" data-place="À distance" data-kind="experience">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 04 / 08</span><b>À distance</b></p>
+                    <h3>Spécialiste en développement · stage</h3>
+                    <p class="ticket-org">Ecolab</p>
+                    <p class="ticket-text">Un stage entièrement en télétravail : du développement et du soutien technique sur les outils informatiques de l'équipe.</p>
+                    <ul class="tags">
+                      <li>Télétravail</li>
+                      <li>Support technique</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">Janv.–mars 2024</b></p>
+                    <p><span>Pendant</span><b>le BTS SIO</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="Bachelor" data-place="Angers" data-kind="formation">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 05 / 08</span><b>Angers</b></p>
+                    <h3>Bachelor Développeur Web &amp; applications (L3)</h3>
+                    <p class="ticket-org">My Digital School</p>
+                    <p class="ticket-text">Une année en alternance : développement d'applications et conception web, un pied à l'école et l'autre en entreprise.</p>
+                    <ul class="tags">
+                      <li>L3</li>
+                      <li>Applications web</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">2024–2025</b></p>
+                    <p><span>Rythme</span><b>Alternance</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="Blackfox" data-place="Sèvremoine" data-kind="experience">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 06 / 08</span><b>Sèvremoine</b></p>
+                    <h3>Développeur d'applications logicielles · alternance</h3>
+                    <p class="ticket-org">Blackfox</p>
+                    <p class="ticket-text">Développer des applications et des logiciels : identifier les problèmes du quotidien, récolter le besoin et proposer des solutions techniques.</p>
+                    <ul class="tags">
+                      <li>Applications métier</li>
+                      <li>1 an</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">2024–2025</b></p>
+                    <p><span>Pendant</span><b>le Bachelor</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="MBA" data-place="Angers" data-kind="formation">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 07 / 08</span><b>Angers</b></p>
+                    <h3>MBA Développeur Full Stack</h3>
+                    <p class="ticket-org">My Digital School</p>
+                    <p class="ticket-text">Le développement web vu d'un cran plus haut : conception et coordination d'équipe. En Master 1, la refonte du site de la Mission Locale du Choletais, en équipe et en interfilière.</p>
+                    <ul class="tags">
+                      <li>Mission Locale du Choletais</li>
+                      <li>Coordination d'équipe</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">2025–2027</b></p>
+                    <p><span>Rythme</span><b>Alternance</b></p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="ticket" data-name="Negocom" data-place="Angers" data-kind="experience">
+                  <div class="ticket-main">
+                    <p class="ticket-route"><span class="mono">ESCALE 08 / 08</span><b>Angers</b></p>
+                    <h3>Développeur web · alternance</h3>
+                    <p class="ticket-org">Negocom Atlantique</p>
+                    <p class="ticket-text">Conception et développement de NegoCRM, un CRM interne pensé de bout en bout : de l'architecture des API REST et de la logique métier jusqu'à l'expérience utilisateur.</p>
+                    <ul class="tags">
+                      <li>NegoCRM</li>
+                      <li>Laravel · Vue.js · API REST</li>
+                    </ul>
+                  </div>
+                  <div class="ticket-stub">
+                    <p><span>Période</span><b class="mono">2025–auj.</b></p>
+                    <p><span>Pendant</span><b>le MBA</b></p>
+                  </div>
+                </article>
+              </li>
+            </ol>
+          </div>
+
+          <div class="arrival" id="arrival">
+            <p class="mono arrival-kicker">ATTERRISSAGE · ANGERS</p>
+            <p class="arrival-title">Merci d'avoir embarqué.</p>
+            <p class="arrival-text">La prochaine escale reste à écrire. On la prépare ensemble ?</p>
+            <div class="welcome-actions">
+              <a class="button" href="#contact">Me contacter</a>
+              <a class="button button-ghost" href="#projets">Voir les projets</a>
+            </div>
+            <button type="button" class="arrival-again" id="again">↺ Refaire le vol</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="profil" class="profile" aria-labelledby="profil-title">
+        <div class="wrap profile-grid">
+          <div class="profile-intro">
+            <p class="eyebrow">Profil</p>
+            <h2 id="profil-title">Développeur full-stack, basé à Angers.</h2>
+            <p>
+              En alternance chez Negocom Atlantique et en MBA à My Digital School. J'aime toucher à toute la chaîne, de
+              l'architecture back-end et des API REST jusqu'aux composants front et à l'infra.
+            </p>
+            <blockquote>J'aime comprendre le mécanisme, pas juste appuyer sur le bouton.</blockquote>
+          </div>
+          <div class="profile-cols">
+            <div>
+              <h3>Formation</h3>
+              <ul class="timeline">
+                <li><b>MBA Développeur Full Stack</b><span>My Digital School · 2025–2027</span></li>
+                <li><b>Bachelor Développeur Web &amp; applications (L3)</b><span>My Digital School · 2024–2025</span></li>
+                <li><b>BTS SIO option SLAM</b><span>Lycée Chevrollier · 2022–2024</span></li>
+                <li><b>Bac général, maths &amp; NSI, mention bien</b><span>Lycée Albert Chatelet · 2019–2022</span></li>
+              </ul>
+            </div>
+            <div>
+              <h3>Stack</h3>
+              <ul class="stack">
+                <li>Laravel / PHP</li>
+                <li>Vue.js</li>
+                <li>SQL / MySQL</li>
+                <li>API REST</li>
+                <li>Docker</li>
+                <li>JavaScript / TypeScript</li>
+                <li>HTML / CSS</li>
+              </ul>
+              <h3>En dehors</h3>
+              <p>De l'auto-hébergement avec Docker, des applis web perso et des mods et plugins Minecraft, pour le plaisir de bidouiller.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projets" class="projects" aria-labelledby="projets-title">
+        <div class="wrap">
+          <p class="eyebrow">Projets</p>
+          <h2 id="projets-title">Ce que j'ai construit</h2>
+          <p class="lead">
+            Des projets personnels et professionnels où j'ai touché à toute la chaîne : applications web, API, plateformes en
+            équipe. La plupart du code est sur mon GitHub.
+          </p>
+          <div class="cards">
+            <article class="card">
+              <img src="/img/works/negocrm.svg" alt="NegoCRM, CRM interne full-stack" width="800" height="500" loading="lazy" decoding="async" />
+              <div class="card-body">
+                <h3>NegoCRM</h3>
+                <p>Le CRM interne de Negocom Atlantique, conçu de bout en bout en alternance : API REST, logique métier et interface.</p>
+                <p class="card-meta"><span class="mono">Laravel · Vue.js · API REST</span><span>Code privé</span></p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="/img/works/prono-ping.webp" alt="Projet Prono Ping : tableau de bord avec prochains matchs, statistiques et classement" width="1600" height="1000" loading="lazy" decoding="async" />
+              <div class="card-body">
+                <h3>Prono Ping</h3>
+                <p>Les pronostics d'un club de tennis de table : saisie des rencontres, pronostics des membres et classement.</p>
+                <p class="card-meta"><span class="mono">PHP · MySQL</span><a href="https://github.com/tombury59/PROJET_PRONO_PING">Code</a></p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="/img/works/mission-locale.webp" alt="Mission Locale du Choletais : page d'accueil du site refondu" width="1600" height="1000" loading="lazy" decoding="async" />
+              <div class="card-body">
+                <h3>Mission Locale du Choletais</h3>
+                <p>Refonte du site officiel en équipe : espaces Jeune et Employeur, carte interactive des antennes, témoignages et contact.</p>
+                <p class="card-meta"><span class="mono">Laravel 8 · Tailwind · Alpine.js</span><span>Dépôt privé</span></p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="/img/works/synergia.webp" alt="Synergia : accueil du portail avec événements à venir, annonces et sondages" width="1600" height="1000" loading="lazy" decoding="async" />
+              <div class="card-body">
+                <h3>Synergia</h3>
+                <p>Une plateforme de vie scolaire : services, événements, cours particuliers, classes et notes, avec une monnaie virtuelle.</p>
+                <p class="card-meta"><span class="mono">Laravel · Blade · Tailwind</span><a href="https://github.com/TTRAP-PROJECT/Synergia-Portal">Code</a></p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="/img/works/phobee.webp" alt="PhoBee : page d'accueil de la plateforme d'accompagnement administratif pour agriculteurs" width="1536" height="826" loading="lazy" decoding="async" />
+              <div class="card-body">
+                <h3>PhoBee</h3>
+                <p>L'administratif des agriculteurs, guidé pas à pas : aides détectées, dossiers pré-remplis et rappels avant chaque échéance.</p>
+                <p class="card-meta"><span class="mono">Laravel · Next.js · Tailwind</span><a href="https://github.com/MDSUphobee/PHOBEE">Code</a></p>
+              </div>
+            </article>
+            <article class="card">
+              <img src="/img/works/wishlist.webp" alt="Wishlist : listes de souhaits par personne, avec ajout d'objets et commentaires" width="1536" height="971" loading="lazy" decoding="async" />
+              <div class="card-body">
+                <h3>Wishlist</h3>
+                <p>Créer et partager des listes de souhaits, et éviter les cadeaux en double.</p>
+                <p class="card-meta"><span class="mono">JavaScript</span><a href="https://github.com/tombury59/WISHLIST">Code</a></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-labelledby="contact-title">
+        <div class="wrap contact-box">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">On en discute ?</h2>
+          <p>Une question, une opportunité ou juste envie d'échanger ? Écrivez-moi, je réponds rapidement.</p>
+          <a class="button button-big" href="mailto:contact@tom-bury.fr?subject=Message%20depuis%20votre%20site">contact@tom-bury.fr</a>
+          <ul class="contact-links">
+            <li><a href="https://www.linkedin.com/in/tom-bury-501534260/">LinkedIn</a></li>
+            <li><a href="https://github.com/tombury59">GitHub</a></li>
+            <li>Angers, France</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <p>© 2026 Tom Bury</p>
+      <p class="mono">VOL TB-26 · three.js</p>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

@@ -1,0 +1,1145 @@
+/* Itinéraire — a night flight over Anjou, in the colours of tom-bury.fr. */
+
+:root {
+  --night: #060b1a;
+  --navy: #0b1326;
+  --navy-2: #111c38;
+  --panel: rgba(11, 19, 38, 0.84);
+  --panel-solid: #0f1a33;
+  --line: rgba(160, 188, 235, 0.16);
+  --line-strong: rgba(160, 188, 235, 0.32);
+  --text: #e8ecf5;
+  --muted: #a3b2cf;
+  --faint: #7d8cab;
+  --blue: #4d84cc;
+  --blue-light: #7fb0ec;
+  /* the logo blue, a shade deeper where white text sits on it (contrast above 4.5:1) */
+  --blue-deep: #3168b5;
+  --warm: #ffd27a;
+  --radius: 16px;
+  --sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  --side: clamp(16px, 4vw, 48px);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 80px;
+}
+
+body {
+  margin: 0;
+  font: 400 16.5px/1.6 var(--sans);
+  color: var(--text);
+  background: var(--night);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+blockquote {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--blue-light);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #fff;
+}
+
+:focus-visible {
+  outline: 2px solid var(--blue-light);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.mono {
+  font-family: var(--mono);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: -80px;
+  left: 16px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: #fff;
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ------------------------------------------------------------ buttons */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 22px;
+  border: 1px solid var(--blue-deep);
+  border-radius: 10px;
+  background: var(--blue-deep);
+  color: #fff;
+  font: 600 15.5px/1 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 0.15s,
+    border-color 0.15s,
+    transform 0.15s;
+}
+.button:hover {
+  background: #2a5a9d;
+  color: #fff;
+  transform: translateY(-1px);
+}
+.button-ghost {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: var(--text);
+}
+.button-ghost:hover {
+  background: rgba(127, 176, 236, 0.1);
+  border-color: var(--blue-light);
+}
+.button-big {
+  min-height: 54px;
+  padding: 0 28px;
+  font-size: 17px;
+}
+
+/* ------------------------------------------------------------ top bar */
+.bar {
+  position: fixed;
+  z-index: 50;
+  inset: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px var(--side);
+  pointer-events: none;
+}
+.bar > * {
+  pointer-events: auto;
+}
+.bar-name,
+.bar-nav {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.bar-name {
+  gap: 10px;
+  padding: 6px 14px 6px 6px;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+.bar-name img {
+  border-radius: 7px;
+}
+.bar-nav {
+  gap: 2px;
+  padding: 4px;
+}
+.bar-nav a {
+  padding: 8px 13px;
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--muted);
+  text-decoration: none;
+}
+.bar-nav a:hover,
+.bar-nav a.is-here {
+  color: var(--text);
+  background: rgba(127, 176, 236, 0.1);
+}
+.bar-nav a.bar-cta {
+  background: var(--blue-deep);
+  color: #fff;
+}
+
+/* ------------------------------------------------------------ the trip: plain version first */
+.voyage {
+  position: relative;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(77, 132, 204, 0.28), transparent 70%),
+    linear-gradient(180deg, #050a1c 0%, #0b1730 55%, #1e3a8a 100%);
+}
+.cabin {
+  position: relative;
+  padding: 110px var(--side) 72px;
+}
+.sky {
+  display: none;
+}
+.welcome {
+  max-width: 620px;
+  margin: 0 auto 56px;
+}
+.welcome-kicker {
+  color: var(--blue-light);
+  font-size: 14px;
+  font-weight: 600;
+}
+.welcome h1 {
+  margin: 10px 0 4px;
+  font-size: clamp(48px, 7vw, 84px);
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+.welcome-role {
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 600;
+  color: var(--blue-light);
+}
+.welcome-text {
+  margin-top: 14px;
+  max-width: 36em;
+  color: var(--muted);
+}
+.welcome-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 24px;
+}
+.welcome-hint {
+  display: none;
+}
+.rail,
+.hud,
+.arrival,
+.autopilot {
+  display: none;
+}
+.tickets {
+  max-width: 760px;
+  margin: 0 auto;
+}
+.tickets-title {
+  margin-bottom: 18px;
+  font-size: 30px;
+  font-weight: 700;
+}
+.ticket-list {
+  display: grid;
+  gap: 16px;
+  padding: 0;
+  list-style: none;
+}
+
+/* the boarding pass */
+.ticket {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel-solid);
+  box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.8);
+}
+.ticket-main {
+  padding: 20px 22px 20px;
+}
+.ticket-route {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13px;
+  color: var(--faint);
+}
+.ticket-route {
+  justify-content: space-between;
+}
+.ticket-route b {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--warm);
+}
+.ticket h3 {
+  margin-top: 8px;
+  font-size: 21px;
+  line-height: 1.25;
+}
+.ticket-org {
+  margin-top: 2px;
+  font-weight: 600;
+  color: var(--blue-light);
+}
+.ticket-text {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 15.5px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 0;
+  list-style: none;
+}
+.tags li {
+  padding: 4px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 13.5px;
+  color: var(--muted);
+}
+.tags a {
+  text-decoration: none;
+}
+.tags a::after {
+  content: " ↗";
+}
+.ticket-stub {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  min-width: 128px;
+  padding: 20px 20px 20px 22px;
+  border-left: 2px dashed var(--line-strong);
+}
+/* the two punched notches of the perforation */
+.ticket-stub::before,
+.ticket-stub::after {
+  content: "";
+  position: absolute;
+  left: -11px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--night);
+  border: 1px solid var(--line);
+}
+.ticket-stub::before {
+  top: -11px;
+}
+.ticket-stub::after {
+  bottom: -11px;
+}
+.ticket-stub p {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ticket-stub span {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.ticket-stub b {
+  font-size: 14.5px;
+  line-height: 1.3;
+  color: var(--text);
+}
+.ticket-stub b.mono {
+  font-size: 15px;
+}
+
+/* ------------------------------------------------------------ the trip, with the 3D scene */
+html.has-3d .voyage {
+  min-height: 100svh;
+  background: var(--night);
+}
+html.has-3d .cabin {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  padding: 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 90% 45% at 50% 100%, rgba(77, 132, 204, 0.35), transparent 70%),
+    linear-gradient(180deg, #050a1c 0%, #0b1730 60%, #1e3a8a 100%);
+}
+html.has-3d .sky {
+  display: block;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+html.scene-on .sky {
+  opacity: 1;
+}
+
+html.has-3d .welcome {
+  position: absolute;
+  z-index: 5;
+  left: var(--side);
+  top: 50%;
+  width: min(540px, calc(100% - 2 * var(--side)));
+  margin: 0;
+  padding: 28px 30px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transform: translateY(-45%);
+  transition:
+    opacity 0.35s,
+    transform 0.35s,
+    visibility 0s linear 0.35s;
+  opacity: 0;
+  visibility: hidden;
+}
+html.has-3d .voyage.is-start .welcome {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%);
+  transition:
+    opacity 0.35s,
+    transform 0.35s;
+}
+html.has-3d .welcome-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--faint);
+}
+.hint-wheel {
+  position: relative;
+  width: 18px;
+  height: 28px;
+  border: 2px solid var(--faint);
+  border-radius: 10px;
+}
+.hint-wheel::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 3px;
+  height: 6px;
+  margin-left: -1.5px;
+  border-radius: 2px;
+  background: var(--blue-light);
+  animation: wheel 1.6s ease-in-out infinite;
+}
+@keyframes wheel {
+  50% {
+    transform: translateY(7px);
+    opacity: 0.3;
+  }
+}
+
+/* the stops, as a vertical rail on the right */
+html.has-3d .rail {
+  display: block;
+  position: absolute;
+  z-index: 6;
+  right: var(--side);
+  top: 50%;
+  transform: translateY(-50%);
+  transition: opacity 0.3s;
+}
+.rail ol {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  list-style: none;
+}
+.rail ol::before {
+  content: "";
+  position: absolute;
+  right: 23px;
+  top: 22px;
+  bottom: 22px;
+  width: 2px;
+  background: var(--line-strong);
+}
+.rail button {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-height: 34px;
+  padding: 0 10px 0 12px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--faint);
+  font: 600 13.5px/1 var(--sans);
+  cursor: pointer;
+  text-align: right;
+}
+.rail button:hover {
+  color: var(--text);
+  background: rgba(127, 176, 236, 0.08);
+}
+.rail-dot {
+  flex: none;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--faint);
+  border-radius: 50%;
+  background: var(--night);
+}
+.rail li.is-past .rail-dot {
+  border-color: var(--blue);
+  background: var(--blue);
+}
+.rail li.is-current button {
+  color: var(--text);
+}
+.rail li.is-current .rail-dot {
+  border-color: var(--warm);
+  background: var(--warm);
+  box-shadow: 0 0 0 4px rgba(255, 210, 122, 0.2);
+}
+
+/* what was done during a formation: a smaller, hollow stop under it */
+.rail li.is-sub button {
+  min-height: 28px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.rail li.is-sub .rail-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0 2px;
+}
+.rail li.is-sub.is-past .rail-dot {
+  background: var(--night);
+}
+
+/* the autopilot: one button, bottom right, play / pause */
+html.has-3d .autopilot {
+  display: inline-flex;
+  position: absolute;
+  z-index: 6;
+  right: var(--side);
+  bottom: 28px;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 20px 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--text);
+  font: 600 15px/1 var(--sans);
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    background 0.2s;
+}
+.autopilot:hover {
+  border-color: var(--blue-light);
+}
+.autopilot svg {
+  width: 22px;
+  height: 22px;
+  padding: 3px;
+  border-radius: 50%;
+  background: var(--blue-deep);
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.autopilot-pause,
+.autopilot[aria-pressed="true"] .autopilot-play {
+  display: none;
+}
+.autopilot[aria-pressed="true"] .autopilot-pause {
+  display: block;
+}
+.autopilot[aria-pressed="true"] {
+  border-color: var(--warm);
+}
+.autopilot[aria-pressed="true"] svg {
+  background: var(--warm);
+  stroke: var(--navy);
+}
+html.has-3d .voyage.is-landed .autopilot {
+  opacity: 0;
+  pointer-events: none;
+}
+
+html.has-3d .hud {
+  display: block;
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  top: 82px;
+  transform: translateX(-50%);
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  font-size: 13px;
+  color: var(--blue-light);
+  white-space: nowrap;
+  transition: opacity 0.3s;
+}
+
+html.has-3d .tickets {
+  position: absolute;
+  z-index: 5;
+  left: var(--side);
+  bottom: 28px;
+  width: min(600px, calc(100% - 2 * var(--side) - 190px));
+  margin: 0;
+  transition: opacity 0.3s;
+}
+html.has-3d .tickets-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+html.has-3d .ticket-list {
+  display: grid;
+}
+/* every ticket in the same cell; only the current one shows */
+html.has-3d .ticket-list > li {
+  grid-area: 1 / 1;
+  align-self: end;
+}
+html.has-3d .ticket {
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(14px) rotate(-0.6deg);
+  transition:
+    opacity 0.25s,
+    transform 0.25s,
+    visibility 0s linear 0.25s;
+}
+html.has-3d .ticket.is-current {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.35s 0.05s,
+    transform 0.35s 0.05s;
+}
+html.has-3d .ticket-stub::before,
+html.has-3d .ticket-stub::after {
+  background: #0a1430;
+}
+
+html.has-3d .arrival {
+  display: block;
+  position: absolute;
+  z-index: 7;
+  right: calc(var(--side) + 190px);
+  top: 120px;
+  width: min(420px, calc(100% - 2 * var(--side)));
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition:
+    opacity 0.3s,
+    transform 0.3s,
+    visibility 0s linear 0.3s;
+}
+html.has-3d .voyage.is-landed .arrival {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity 0.35s,
+    transform 0.35s;
+}
+.arrival-kicker {
+  font-size: 13px;
+  color: var(--warm);
+}
+.arrival-title {
+  margin-top: 6px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.arrival-text {
+  margin-top: 6px;
+  color: var(--muted);
+}
+.arrival-again {
+  margin-top: 14px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--faint);
+  font: 600 14px/1.2 var(--sans);
+  cursor: pointer;
+}
+.arrival-again:hover {
+  color: var(--text);
+}
+html.has-3d .voyage.is-passing .tickets,
+html.has-3d .voyage.is-start .tickets,
+html.has-3d .voyage.is-start .rail,
+html.has-3d .voyage.is-start .hud {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------ sections after the trip */
+.wrap {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+}
+.profile,
+.projects,
+.contact {
+  padding: clamp(72px, 10vw, 128px) var(--side);
+}
+.profile {
+  background: linear-gradient(180deg, #1e3a8a -40%, var(--navy) 30%);
+}
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: clamp(32px, 6vw, 80px);
+}
+.profile h2,
+.projects h2,
+.contact h2 {
+  margin: 10px 0 16px;
+  font-size: clamp(32px, 4.4vw, 50px);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+.profile-intro > p:not(.eyebrow) {
+  color: var(--muted);
+  font-size: 17.5px;
+}
+blockquote {
+  margin-top: 24px;
+  padding-left: 16px;
+  border-left: 3px solid var(--blue);
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.profile-cols {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+}
+.profile-cols h3 {
+  margin-bottom: 12px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.profile-cols h3 ~ h3 {
+  margin-top: 26px;
+}
+.profile-cols p {
+  color: var(--muted);
+}
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 16px;
+  padding: 0 0 0 20px;
+  list-style: none;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--line-strong);
+}
+.timeline li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 7px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+.timeline span {
+  font-size: 14.5px;
+  color: var(--faint);
+}
+.stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.stack li {
+  padding: 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 8px;
+  font-size: 14.5px;
+  font-weight: 600;
+}
+
+.projects {
+  background: var(--navy);
+}
+.lead {
+  max-width: 44em;
+  color: var(--muted);
+  font-size: 17.5px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 40px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--navy-2);
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--line-strong);
+}
+.card img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: 1px solid var(--line);
+}
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+  padding: 18px 20px 20px;
+}
+.card h3 {
+  font-size: 20px;
+}
+.card-body > p:not(.card-meta) {
+  color: var(--muted);
+  font-size: 15.5px;
+}
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 6px 12px;
+  margin-top: auto;
+  padding-top: 8px;
+  font-size: 13.5px;
+  color: var(--faint);
+}
+.card-meta .mono {
+  color: var(--blue-light);
+}
+.card-meta a {
+  font-weight: 600;
+}
+.card-meta a::after {
+  content: " ↗";
+}
+
+.contact {
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 110%, rgba(77, 132, 204, 0.35), transparent 70%),
+    var(--night);
+}
+.contact-box {
+  max-width: 680px;
+  text-align: center;
+}
+.contact-box > p:not(.eyebrow) {
+  margin-bottom: 28px;
+  color: var(--muted);
+  font-size: 17.5px;
+}
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+  margin-top: 24px;
+  padding: 0;
+  list-style: none;
+  color: var(--faint);
+}
+.contact-links a {
+  font-weight: 600;
+}
+.contact-links a::after {
+  content: " ↗";
+}
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 22px var(--side);
+  border-top: 1px solid var(--line);
+  background: var(--night);
+  font-size: 14px;
+  color: var(--faint);
+}
+
+/* ------------------------------------------------------------ smaller screens */
+@media (max-width: 1100px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .rail-name {
+    display: none;
+  }
+  .rail li.is-current .rail-name {
+    display: inline;
+  }
+  html.has-3d .tickets {
+    width: min(600px, calc(100% - 2 * var(--side) - 70px));
+  }
+  html.has-3d .arrival {
+    right: var(--side);
+  }
+}
+
+@media (max-width: 860px) {
+  .profile-grid,
+  .profile-cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  body {
+    font-size: 16px;
+  }
+  .bar {
+    padding: 10px 12px;
+  }
+  .bar-nav a:not(.bar-cta) {
+    display: none;
+  }
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .ticket {
+    grid-template-columns: 1fr;
+  }
+  .ticket-stub {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 28px;
+    min-width: 0;
+    padding: 12px 18px 14px;
+    border-left: 0;
+    border-top: 2px dashed var(--line-strong);
+  }
+  .ticket-stub::before,
+  .ticket-stub::after {
+    top: -11px;
+    bottom: auto;
+  }
+  .ticket-stub::before {
+    left: -11px;
+  }
+  .ticket-stub::after {
+    left: auto;
+    right: -11px;
+  }
+  html.has-3d .welcome {
+    top: auto;
+    bottom: 16px;
+    left: 12px;
+    width: calc(100% - 24px);
+    padding: 22px 20px;
+    transform: translateY(12px);
+  }
+  html.has-3d .voyage.is-start .welcome {
+    transform: none;
+  }
+  html.has-3d .welcome-hint {
+    display: none;
+  }
+  html.has-3d .tickets {
+    left: 12px;
+    right: 12px;
+    bottom: 12px;
+    width: auto;
+  }
+  html.has-3d .ticket-main {
+    padding: 16px 18px;
+  }
+  html.has-3d .ticket-text {
+    font-size: 15px;
+  }
+  /* the rail turns into a row of dots along the top */
+  html.has-3d .rail {
+    top: 64px;
+    right: 12px;
+    left: 12px;
+    transform: none;
+  }
+  .rail ol {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .rail ol::before {
+    left: 22px;
+    right: 22px;
+    top: 50%;
+    bottom: auto;
+    width: auto;
+    height: 2px;
+  }
+  .rail button {
+    padding: 0 6px;
+  }
+  .rail-name,
+  .rail li.is-current .rail-name {
+    display: none;
+  }
+  html.has-3d .hud {
+    top: 104px;
+  }
+  /* on a phone: a round play / pause button under the rail, on the right */
+  html.has-3d .autopilot {
+    top: 104px;
+    bottom: auto;
+    right: 12px;
+    min-height: 38px;
+    padding: 0 8px;
+  }
+  .autopilot-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .rail li.is-sub .rail-dot {
+    width: 9px;
+    height: 9px;
+  }
+  html.has-3d .arrival {
+    top: auto;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+  }
+  /* once landed, the arrival card takes the place of the ticket */
+  html.has-3d .voyage.is-landed .tickets {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01s !important;
+    scroll-behavior: auto !important;
+  }
+}

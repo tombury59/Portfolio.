@@ -1,0 +1,44 @@
+# Tom Bury
+
+> Portfolio de Tom Bury, développeur full-stack basé à Angers (France). Il travaille en Laravel, Vue.js, API REST et Docker, et héberge ses projets sur son propre serveur. Alternant chez Negocom Atlantique et en MBA Développeur Full Stack à My Digital School.
+
+Le site tom-bury.fr est une page unique en français, en trois parties : À propos (compétences, expérience, formation), Projets et Contact. Les informations ci-dessous en sont un résumé fidèle.
+
+**Compétences, du plus fort au plus récent** : Laravel / PHP, Vue.js, SQL / MySQL, API REST, Docker et auto-hébergement, JavaScript / TypeScript, HTML / CSS.
+
+**Expérience**
+- Développeur web chez Negocom Atlantique, en alternance (sept. 2025 à aujourd'hui, Angers) : développement full-stack Laravel et Vue.js de NegoCRM, un CRM interne conçu de bout en bout.
+- Développeur d'applications logicielles chez Blackfox, en alternance (sept. 2024 à sept. 2025, Sèvremoine).
+- Spécialiste en développement chez Ecolab, en stage (janv. à mars 2024, à distance).
+- Développeur web au Le Champenais, en stage (mai à juin 2023, Maine-et-Loire).
+
+**Formation**
+- MBA Développeur Full Stack, My Digital School (sept. 2025 à août 2027).
+- Bachelor Développeur Web & applications (L3), My Digital School (sept. 2024 à sept. 2025).
+- BTS SIO option SLAM, Lycée Chevrollier (2022 à 2024).
+- Baccalauréat général, mathématiques et NSI, Lycée Albert Chatelet (2019 à 2022), mention bien.
+
+**Projets sans dépôt public**
+- NegoCRM : CRM interne full-stack (Laravel, Vue.js, API REST) développé chez Negocom Atlantique.
+- Mission Locale du Choletais : refonte du site officiel, projet interfilière de Master 1 (Laravel 8, TailwindCSS, Alpine.js).
+
+## Site
+
+- [Portfolio](https://tom-bury.fr/): page unique avec compétences, expérience, formation, projets et contact
+
+## Projets (code public)
+
+- [Projet Prono Ping](https://github.com/tombury59/PROJET_PRONO_PING): application web de pronostics pour un club de tennis de table (PHP, MySQL)
+- [Synergia Portal](https://github.com/TTRAP-PROJECT/Synergia-Portal): plateforme de vie scolaire pour un BTS SIO, avec services, événements, cours particuliers et monnaie virtuelle (Laravel, Blade, TailwindCSS)
+- [Wishlist](https://github.com/tombury59/WISHLIST): création et partage de listes de souhaits (JavaScript)
+- [PhoBee](https://github.com/MDSUphobee/PHOBEE): plateforme web et mobile d'accompagnement administratif pour les agriculteurs (Laravel, Next.js, Tailwind)
+
+## Profils et contact
+
+- [GitHub](https://github.com/tombury59): dépôts et projets
+- [LinkedIn](https://www.linkedin.com/in/tom-bury-501534260/): parcours professionnel
+- [Email](mailto:contact@tom-bury.fr): pour une alternance, un stage, une mission ou simplement échanger
+
+## Optional
+
+- [Plan du site](https://tom-bury.fr/sitemap.xml)

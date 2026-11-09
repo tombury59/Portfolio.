@@ -1,0 +1,23 @@
+{
+  "name": "tom-bury-itineraire",
+  "type": "module",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Portfolio de Tom Bury : un vol de nuit en avion en papier au-dessus de l'Anjou, une escale par étape du parcours",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.186.0",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.5"
+  }
+}
