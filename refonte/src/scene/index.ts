@@ -35,6 +35,8 @@ const UP = new Vector3(0, 1, 0);
 
 /** How high the plane passes over each stop (the mast and the tower need more room). Take-off and landing are on the ground. */
 const PASS_HEIGHT = [0.75, 6, 5.5, 9.5, 6, 5.5, 6, 0.75];
+/** Bachelor → Blackfox → MBA goes out to Sèvremoine and back to the same school: those two hops fly as arcs. */
+const LOOPED_HOPS = [4, 5];
 
 /** Frame-rate independent approach: the fraction of the way to cover this frame. */
 const approach = (rate: number, dt: number) => 1 - Math.exp(-rate * dt);
@@ -176,18 +178,33 @@ export function startScene(canvas: HTMLCanvasElement, trip: Trip) {
   // ---- the route: through every stop, climbing between them ----
   const ground = STOP_XZ.map(([x, z]) => heightAt(x, z));
   const points: Vector3[] = [];
+  const stopIndex: number[] = [];
   STOP_XZ.forEach(([x, z], k) => {
-    points.push(new Vector3(x, ground[k] + PASS_HEIGHT[k], z));
+    stopIndex.push(points.length);
+    const here = new Vector3(x, ground[k] + PASS_HEIGHT[k], z);
+    points.push(here);
     if (k === STOPS - 1) return;
     const [nx, nz] = STOP_XZ[k + 1];
     const dist = Math.hypot(nx - x, nz - z);
     let top = 0;
     for (let i = 1; i < 8; i++) top = Math.max(top, heightAt(x + ((nx - x) * i) / 8, z + ((nz - z) * i) / 8));
-    // a gentle climb out of each stop, cruising higher on the long hops
-    points.push(new Vector3((x + nx) / 2, top + Math.min(16, 6 + dist * 0.18), (z + nz) / 2));
+    if (!LOOPED_HOPS.includes(k)) {
+      // a gentle climb out of each stop, cruising higher on the long hops
+      points.push(new Vector3((x + nx) / 2, top + Math.min(16, 6 + dist * 0.18), (z + nz) / 2));
+      return;
+    }
+    // a wide, high arc bowing to the left of the way: the return trip bows the other way, so the
+    // out-and-back reads as a loop instead of one line drawn twice
+    const next = new Vector3(nx, ground[k + 1] + PASS_HEIGHT[k + 1], nz);
+    const left = new Vector3(nz - z, 0, -(nx - x)).normalize();
+    const climb = top + 22 - (here.y + next.y) / 2;
+    for (const f of [0.2, 0.4, 0.6, 0.8]) {
+      const arc = Math.sin(Math.PI * f);
+      points.push(here.clone().lerp(next, f).addScaledVector(left, dist * 0.3 * arc).addScaledVector(UP, climb * arc));
+    }
   });
   const route = new CatmullRomCurve3(points, false, "centripetal");
-  const tAtStop = (k: number) => (2 * k) / (points.length - 1);
+  const tAtStop = (k: number) => stopIndex[k] / (points.length - 1);
   // the route ahead, as a dotted line of light: only from the plane to the next stop, so Angers stays readable
   const DOTS = 1200;
   const dots = new Points(

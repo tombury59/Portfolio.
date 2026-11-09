@@ -88,6 +88,26 @@ a:hover {
   white-space: nowrap;
 }
 
+/* the dip to night between two sections (main.ts) */
+body::after {
+  content: "";
+  position: fixed;
+  z-index: 90;
+  inset: 0;
+  background: var(--night);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-out;
+}
+html.is-fading body::after {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+/* a section reached by a link takes the focus, without the outline */
+section:focus {
+  outline: none;
+}
+
 .skip-link {
   position: fixed;
   z-index: 100;

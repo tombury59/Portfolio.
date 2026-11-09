@@ -15,6 +15,8 @@ export interface Trip {
   wake: () => void;
   /** back to the plain list (no WebGL, or the scene failed to load) */
   disable: () => void;
+  /** stop the autopilot and any flight to a stop: the page is about to jump elsewhere */
+  halt: () => void;
 }
 
 export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
@@ -36,6 +38,7 @@ export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
     cabin,
     wake: () => {},
     disable,
+    halt: () => {},
   };
 
   // screen readers hear the stop change; the tickets themselves stay in the page
@@ -249,6 +252,7 @@ export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
     setAutopilot(false);
     stopTransit();
   };
+  trip.halt = takeOver;
   addEventListener("wheel", takeOver, { passive: true });
   addEventListener("touchstart", (e) => !(e.target as Element).closest?.(".autopilot") && takeOver(), { passive: true });
   addEventListener("keydown", (e) => {

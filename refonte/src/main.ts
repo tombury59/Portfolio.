@@ -41,6 +41,31 @@ if (enabled) {
   }
 }
 
+// in-page links: the trip is ten screens tall, so instead of scrolling through it (or jumping cold),
+// the page dips to night for a moment, moves, and comes back
+const FADE_OUT_MS = 200;
+document.addEventListener("click", (e) => {
+  const link = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
+  if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  const target = document.querySelector<HTMLElement>(link.hash);
+  if (!target) return;
+  e.preventDefault();
+  trip.halt();
+  const land = () => {
+    target.scrollIntoView({ block: "start" });
+    history.pushState(null, "", link.hash);
+    // keyboard and screen-reader users continue from the new section
+    if (!target.hasAttribute("tabindex")) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+  };
+  if (trip.reduced) return land();
+  document.documentElement.classList.add("is-fading");
+  setTimeout(() => {
+    land();
+    requestAnimationFrame(() => document.documentElement.classList.remove("is-fading"));
+  }, FADE_OUT_MS);
+});
+
 // highlight the section being read in the top bar
 const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".bar-nav a"));
 const sections = navLinks.map((a) => document.querySelector<HTMLElement>(a.hash)!);
