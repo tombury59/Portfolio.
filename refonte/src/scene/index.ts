@@ -451,6 +451,9 @@ export function startScene(canvas: HTMLCanvasElement, trip: Trip) {
 
   trip.wake = wake;  frame(0);
   renderer.render(scene, camera);
-  requestAnimationFrame(() => document.documentElement.classList.add("scene-on"));
+  requestAnimationFrame(() => {
+    document.documentElement.classList.add("scene-on");
+    trip.ready();
+  });
   wake();
 }

@@ -17,6 +17,8 @@ export interface Trip {
   disable: () => void;
   /** stop the autopilot and any flight to a stop: the page is about to jump elsewhere */
   halt: () => void;
+  /** called by the scene once its first frame is on screen: the trip can start */
+  ready: () => void;
 }
 
 export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
@@ -39,6 +41,7 @@ export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
     wake: () => {},
     disable,
     halt: () => {},
+    ready: () => {},
   };
 
   // screen readers hear the stop change; the tickets themselves stay in the page
@@ -64,6 +67,27 @@ export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
   let on = opts.enabled;
   if (!on) return trip;
 
+  // ---- boarding: until the scene is ready the trip stays parked at take-off ----
+  // Scrolling is held (no part of the flight gets skipped), and a click on "Embarquer", the autopilot
+  // or a stop waits and goes as soon as the plane can fly.
+  let isReady = false;
+  let pending: (() => void) | null = null;
+  if (scrollY < innerHeight * 0.5) root.classList.add("is-boarding");
+  const whenReady = (action: () => void) => {
+    if (isReady) return true;
+    pending = action;
+    root.classList.add("is-preparing");
+    return false;
+  };
+  trip.ready = () => {
+    if (isReady) return;
+    isReady = true;
+    root.classList.remove("is-boarding", "is-preparing");
+    const action = pending;
+    pending = null;
+    action?.();
+  };
+
   // ---- scroll geometry ----
   const unit = CSS.supports("height", "100svh") ? "svh" : "vh";
   section.style.height = `${(TOTAL_SCREENS + 1) * 100}${unit}`;
@@ -79,6 +103,7 @@ export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
 
   /** Fly to stop k at the autopilot's speed, forwards or backwards. */
   function flyTo(k: number) {
+    if (!whenReady(() => flyTo(k))) return;
     setAutopilot(false);
     const target = k === STOPS - 1 ? TOTAL_SCREENS - ARRIVAL_SCREENS * 0.5 : screensAt(k);
     if (trip.reduced) scrollToScreens(target);
@@ -143,6 +168,12 @@ export function initTrip(opts: { enabled: boolean; reduced: boolean }): Trip {
   let parkedAt = 0;
 
   function setAutopilot(engaged: boolean) {
+    if (!isReady) {
+      // letting go of the button before the scene is ready cancels the wait
+      if (engaged) whenReady(() => setAutopilot(true));
+      else pending = null;
+      return;
+    }
     if (engaged === autopilot) return;
     autopilot = engaged;
     if (engaged) stopTransit();

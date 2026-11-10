@@ -419,6 +419,50 @@ html.has-3d .cabin {
     radial-gradient(ellipse 90% 45% at 50% 100%, rgba(77, 132, 204, 0.35), transparent 70%),
     linear-gradient(180deg, #050a1c 0%, #0b1730 60%, #1e3a8a 100%);
 }
+
+/* until the scene is ready the trip stays parked at take-off, so no part of the flight is skipped */
+html.is-boarding,
+html.is-boarding body {
+  overflow: hidden;
+}
+.welcome-loading {
+  display: none;
+}
+html.has-3d.is-preparing:not(.scene-on) .welcome-loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  font: 500 13.5px/1.2 var(--mono);
+  color: var(--blue-light);
+}
+html.has-3d.is-preparing:not(.scene-on) .welcome-hint {
+  display: none;
+}
+.loading-bar {
+  position: relative;
+  overflow: hidden;
+  width: 90px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--line-strong);
+}
+.loading-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0 60% 0 0;
+  border-radius: 3px;
+  background: var(--blue-light);
+  animation: loading 1.1s ease-in-out infinite;
+}
+@keyframes loading {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(260%);
+  }
+}
 html.has-3d .sky {
   display: block;
   position: absolute;
@@ -1140,17 +1184,39 @@ blockquote {
     width: 9px;
     height: 9px;
   }
+  /* on a phone the last ticket stays at the bottom: the arrival becomes a compact strip at the top */
   html.has-3d .arrival {
-    top: auto;
-    bottom: 12px;
+    top: 112px;
+    bottom: auto;
     left: 12px;
     right: 12px;
     width: auto;
+    padding: 14px 16px;
   }
-  /* once landed, the arrival card takes the place of the ticket */
-  html.has-3d .voyage.is-landed .tickets {
+  .arrival-kicker,
+  .arrival-text {
+    display: none;
+  }
+  .arrival-title {
+    margin-top: 0;
+    font-size: 19px;
+  }
+  .arrival .welcome-actions {
+    margin-top: 10px;
+    gap: 8px;
+  }
+  .arrival .button {
+    flex: 1;
+    min-height: 40px;
+    padding: 0 12px;
+    font-size: 14.5px;
+  }
+  .arrival-again {
+    margin-top: 8px;
+  }
+  /* the HUD already says where we landed */
+  html.has-3d .voyage.is-landed .hud {
     opacity: 0;
-    pointer-events: none;
   }
 }
 

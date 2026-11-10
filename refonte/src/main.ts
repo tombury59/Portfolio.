@@ -24,20 +24,22 @@ if (enabled) {
   const loadScene = () => {
     if (loading) return;
     loading = true;
+    document.documentElement.classList.add("is-preparing");
     import("./scene/index")
       .then(({ startScene }) => startScene(document.getElementById("sky") as HTMLCanvasElement, trip))
       .catch((err) => {
         console.warn("Scène 3D indisponible, l'itinéraire reste lisible en liste.", err);
         trip.disable();
+        trip.ready();
       });
   };
-  if (trip.coarse) {
-    // on a phone, building the scene keeps the CPU busy for a moment: wait until the visitor does something
-    for (const ev of ["touchstart", "pointerdown", "scroll", "keydown"]) addEventListener(ev, loadScene, { once: true, passive: true });
-  } else if ("requestIdleCallback" in window) {
-    requestIdleCallback(loadScene, { timeout: 1000 });
-  } else {
-    setTimeout(loadScene, 150);
+  // the first attempt to scroll or click starts the loading right away
+  for (const ev of ["touchstart", "pointerdown", "wheel", "scroll", "keydown"]) addEventListener(ev, loadScene, { once: true, passive: true });
+  // on a desktop, don't wait for it: as soon as the browser is free. On a phone, building the scene
+  // keeps the CPU busy for a moment, so it waits for that first gesture.
+  if (!trip.coarse) {
+    if ("requestIdleCallback" in window) requestIdleCallback(loadScene, { timeout: 1000 });
+    else setTimeout(loadScene, 150);
   }
 }
 
